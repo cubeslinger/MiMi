@@ -102,7 +102,7 @@ local function createwindow()
    mimiscroll:EventAttach(   Event.UI.Scrollbar.Change,
                            function()
                               local pos = mimiscroll:GetPosition()
-                              mimiframe:SetPoint("TOPLEFT", mimimaskframe, "TOPLEFT", 0, -math.floor(mimi.gui.font.size * pos) )
+                              mimiframe:SetPoint("TOPLEFT", mimimaskframe, "TOPLEFT", 0, -math.floor((mimi.gui.font.size*2) * pos) )
                            end,
                            "TotalsFrame_Scrollbar.Change"
                         )
@@ -113,14 +113,22 @@ local function createwindow()
    return mimiwin, mimiframe, mimiscroll
 end
 
-local function createline(minionname, miniontbl, mimiframe)
+local function createline(number, minionname, miniontbl, mimiframe)
 
    local missingframe   =  UI.CreateFrame("Frame", "mimilineframe", mimiframe)
+   missingframe:SetHeight(mimi.gui.font.size*2)
+   
+   local num           =  UI.CreateFrame("Text", "missingminionnum",   missingframe)
+   num:SetFontSize(mimi.gui.font.size)
+   num:SetText(string.format("%s", number))
+   num:SetLayer(3)
+   num:SetPoint("TOPLEFT",   missingframe, "TOPLEFT")   
+   
    local line           =  UI.CreateFrame("Text", "missingminionline",   missingframe)
    line:SetFontSize(mimi.gui.font.size)
    line:SetText(string.format("%s", minionname))
    line:SetLayer(3)
-   line:SetPoint("TOPLEFT",   missingframe, "TOPLEFT")
+   line:SetPoint("TOPLEFT",   num, "TOPRIGHT", mimi.gui.font.size, 0)
 
    local obtained       =  UI.CreateFrame("Text", "missingminionobtained",   missingframe)
    obtained:SetFontSize(mimi.gui.font.size)
@@ -141,9 +149,11 @@ end
 local function populatemissinglist(missingtbl, mimiframe)
 
    local lastline =  nil
+   local cnt      =  0
    for name, tbl in pairs(missingtbl) do
+      cnt = cnt + 1
 --       print(string.format("name=%s tbl=%s", name, tbl))
-      local line = createline(name, tbl, mimiframe)
+      local line = createline(cnt, name, tbl, mimiframe)
 
       if lastline then
          line:SetPoint("TOPLEFT",  lastline, "BOTTOMLEFT")
@@ -171,7 +181,7 @@ local function searchformissing()
    for name, tbl in pairs(mimi.db.name_obtained) do
       total = total + 1
       for id, _ in pairs(minions) do
-         local detail = Inspect.Minion.Minion.Detail(id) if name == detail.name then found = true end
+         local detail = Inspect.Minion.Minion.Detail(id) if name == detail.name then found = true break end
       end
 
       if found then

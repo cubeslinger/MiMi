@@ -13,20 +13,20 @@ mimi.db.name_obtained["Agnion Euzonos"] = { obtained='PvP', details='From Maraud
 mimi.db.name_obtained["Ahgnox"] = { obtained='Puzzle', details='Gained from Nightmare Tide Puzzle chest after 1st time.' }
 mimi.db.name_obtained["Airoldus"] = { obtained='Zone Event Drop', details='Cracking Xarth\'s Skull' }
 mimi.db.name_obtained["Al"] = { obtained='RIFT Store', details='Requires Pelagic Order: Friendly' }
-mimi.db.name_obtained["Alcander (A)"] = { obtained='RIFT Store', details='Gained for Credits under RIFT Store -> Pets -> Minions.' }
+mimi.db.name_obtained["Alcander"] = { obtained='RIFT Store', details='Gained for Credits under RIFT Store -> Pets -> Minions.' }
 mimi.db.name_obtained["Anuxy"] = { obtained='RIFT Store', details='Requires Atragarians: Revered' }
 mimi.db.name_obtained["Arcane Cannon"] = { obtained='Zone Event Drop', details='Cracking Xarth\'s Skull' }
-mimi.db.name_obtained["Archaeologist Herim (A)"] = { obtained='Promo', details='"Complete ""Arclight Mastery"" Achievement during Arclight Infiltration Promo Week. Attracts Artifact Adventures."' }
+mimi.db.name_obtained["Archaeologist Herim"] = { obtained='Promo', details='"Complete ""Arclight Mastery"" Achievement during Arclight Infiltration Promo Week. Attracts Artifact Adventures."' }
 mimi.db.name_obtained["Athelan the Fallen"] = { obtained='World Event', details='Gained from the Autumn Harvest Minion Adventure Chain that starts with Minion Card: Taskmaster Atrophinius.' }
 mimi.db.name_obtained["Atrophinius"] = { obtained='World Event', details='"Fae Yule World Event 2014. Fae Yule 8hr Minion Adventure unlocked with ""2014 Fae Yule Minion Adventure Pack"" from RIFT Store -> World Event."' }
-mimi.db.name_obtained["Atrophinius the Festive (H)"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
+mimi.db.name_obtained["Atrophinius the Festive"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
 mimi.db.name_obtained["Augustor"] = { obtained='Quest', details='One and Many Quest in Ghar Station Tau (Tarken Glacier).' }
 mimi.db.name_obtained["Aurora"] = { obtained='Quest', details='Behold the Ascended at Ghar Station Mem in Goboro Reef' }
 mimi.db.name_obtained["Azach"] = { obtained='RIFT Store', details='Gained from RIFT Store -> Pets -> Minions' }
 mimi.db.name_obtained["Azumel"] = { obtained='World Event', details='From Autumn Harvest World Event 2014. Temporary found RIFT Store -> World Event' }
 mimi.db.name_obtained["Baelnezum"] = { obtained='World Event', details='Gained from the Autumn Harvest Minion Adventure Chain that starts with Minion Card: Valzor.' }
 mimi.db.name_obtained["Bea"] = { obtained='RIFT Store', details='Gained from RIFT Store -> Pets -> Minions' }
-mimi.db.name_obtained["Billows (A)"] = { obtained='Crafted', details='RIFT Store -> Crafting -> Artificer. Use \'Minions\' filter.' }
+mimi.db.name_obtained["Billows"] = { obtained='Crafted', details='RIFT Store -> Crafting -> Artificer. Use \'Minions\' filter.' }
 mimi.db.name_obtained["Birch"] = { obtained='Achievement', details='Making Sense?' }
 mimi.db.name_obtained["Bitey"] = { obtained='Rift Drop', details='Dropped from \'Invasive Species\' Hellbug lure during zone event in Silverwood for some1232.' }
 mimi.db.name_obtained["Bloodroot the Feaster"] = { obtained='Zone Event Drop', details='Cracking Xarth\'s Skull' }
@@ -34,10 +34,8 @@ mimi.db.name_obtained["Bloop"] = { obtained='Promo', details='Comes with Infusio
 mimi.db.name_obtained["Bludfeng"] = { obtained='RIFT Store', details='Requires Pelagic Order: Decorated.' }
 mimi.db.name_obtained["Breezy"] = { obtained='RIFT Store', details='Requires The Onir: Honored' }
 mimi.db.name_obtained["C1-0N3"] = { obtained='Crafted', details='RIFT Store -> Crafting -> Apothecary. Use \'Minions\' filter.' }
-mimi.db.name_obtained["Caeweth"] = { obtained='',
-details='' }
-mimi.db.name_obtained["Captain Dagon"] = { obtained='',
-details='Summerfest' }
+mimi.db.name_obtained["Caeweth"] = { obtained='', details='' }
+mimi.db.name_obtained["Captain Dagon"] = { obtained='', details='Summerfest' }
 mimi.db.name_obtained["Carmine"] = { obtained='RIFT Store', details='Gained from RIFT Store -> Pets -> Minions' }
 mimi.db.name_obtained["Cerulean Steel"] = { obtained='Crafted', details='RIFT Store -> Crafting -> Weaponsmith. Use \'Minions\' filter.' }
 mimi.db.name_obtained["Comet"] = { obtained='Artifact Set', details='Rhen Coronation Memorabilia (65)' }
@@ -53,29 +51,29 @@ mimi.db.name_obtained["Dead Simon"] = { obtained='Achievement', details='Pilfere
 mimi.db.name_obtained["Deeps"] = { obtained='Achievement', details='Last Of The Litter' }
 mimi.db.name_obtained["Desecrated Lanaria"] = { obtained='Rift Store', details='Requires Feilbokan: Revered' }
 mimi.db.name_obtained["Dorald"] = { obtained='Achievement', details='Reef Ramble' }
-mimi.db.name_obtained["Doreen (A)"] = { obtained='RIFT Store', details='Gained from RIFT Store -> Pets -> Minions' }
-mimi.db.name_obtained["Drekanoth of Fate (H)"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
+mimi.db.name_obtained["Doreen"] = { obtained='RIFT Store', details='Gained from RIFT Store -> Pets -> Minions' }
+mimi.db.name_obtained["Drekanoth of Fate"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
 mimi.db.name_obtained["Duke Arcarax"] = { obtained='Achievement', details='The devil you know' }
 mimi.db.name_obtained["Eailziana"] = { obtained='Zone Event Drop', details='Cracking Xarth\'s Skull' }
 mimi.db.name_obtained["Eelo"] = { obtained='PvP', details='From Marauders Supply Cache (gained by winning Lvl 60+ PvP Warfronts)' }
 mimi.db.name_obtained["Eliam"] = { obtained='Lockbox', details='Chance drop from Lockboxes/Supply Crates' }
 mimi.db.name_obtained["Ereetu"] = { obtained='Rift/Mob Drop', details='Normal mob on Ember Isle. Can also drop from Major Rift in Shimmersand.' }
 mimi.db.name_obtained["Ewethanasia"] = { obtained='RIFT Store', details='Requires The Ghar: Friendly' }
-mimi.db.name_obtained["Face Pull (A)"] = { obtained='RIFT Store', details='Gained from RIFT Store -> Pets -> Minions' }
+mimi.db.name_obtained["Face Pull"] = { obtained='RIFT Store', details='Gained from RIFT Store -> Pets -> Minions' }
 mimi.db.name_obtained["Fang"] = { obtained='RIFT Store', details='Gained from RIFT Store -> Pets -> Minions' }
 mimi.db.name_obtained["Floop"] = { obtained='Artifact Set', details='Clubs of Bottomtown (63)' }
-mimi.db.name_obtained["Fluffy (H)"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
+mimi.db.name_obtained["Fluffy"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
 mimi.db.name_obtained["Frederic Kain"] = { obtained='Lockbox', details='Chance drop from Lockboxes/Supply Crates' }
 mimi.db.name_obtained["Gakakhis"] = { obtained='IA Drop', details='During Autumn Harvest from the event IAs' }
-mimi.db.name_obtained["Gambahl (A)"] = { obtained='World Event', details='Gained from the Autumn Harvest Minion Adventure Chain that starts with Minion Card: Valzor.' }
+mimi.db.name_obtained["Gambahl"] = { obtained='World Event', details='Gained from the Autumn Harvest Minion Adventure Chain that starts with Minion Card: Valzor.' }
 mimi.db.name_obtained["Garn"] = { obtained='Achievement', details='All kobolds go to heaven' }
 mimi.db.name_obtained["General Batua"] = { obtained='Puzzle', details='Tarken Glacier Puzzle drop.' }
 mimi.db.name_obtained["Gil"] = { obtained='RIFT Store/Fishing', details='"From ""Minion Starter Pack"". Fished up using Uncle Stan\'s Secret Lure or Lure of Planar Distortion."' }
 mimi.db.name_obtained["Goldgrille"] = { obtained='RIFT Store', details='Requires Cerulean Rhenke: Revered' }
 mimi.db.name_obtained["Grace"] = { obtained='Fishing', details='Fished up using Uncle Stan\'s Secret Lure or Lure of Planar Distortion.' }
-mimi.db.name_obtained["Greatfather Frost (H)"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
-mimi.db.name_obtained["Grendelkhan (H)"] = { obtained='Hidden Minion', details='"please refer to the ""Hidden Minion Cards"" tab for full information."' }
-mimi.db.name_obtained["Grish (H)"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
+mimi.db.name_obtained["Greatfather Frost"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
+mimi.db.name_obtained["Grendelkhan"] = { obtained='Hidden Minion', details='"please refer to the ""Hidden Minion Cards"" tab for full information."' }
+mimi.db.name_obtained["Grish"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
 mimi.db.name_obtained["Gristlespitt"] = { obtained='Rift Store', details='Requires Mages of Alittu: Decorated' }
 mimi.db.name_obtained["Gruell"] = { obtained='PvP', details='From Marauders Supply Cache (gained by winning Lvl 60+ PvP Warfronts)' }
 mimi.db.name_obtained["Gurock"] = { obtained='IA Drop', details='Dropped from Freemarch Instant Adventure' }
@@ -101,12 +99,12 @@ mimi.db.name_obtained["Jakub"] = { obtained='Lockbox', details='Chance drop from
 mimi.db.name_obtained["Jari"] = { obtained='Mob Drop', details='From Bogling in Moonshade Highlands. Can also drop from Lesser Golems in the same zone.' }
 mimi.db.name_obtained["Jasper"] = { obtained='RIFT Store', details='Gained from RIFT Store -> Pets -> Minions' }
 mimi.db.name_obtained["Jilleen"] = { obtained='PvP', details='From Marauders Supply Cache (gained by winning Lvl 60+ PvP Warfronts).' }
-mimi.db.name_obtained["Jineth (A)"] = { obtained='Promo', details='"Complete ""Attractive Proposition"" Quest during Arclight Infiltration Promo Week. Attracts Artifact Adventures specific to the Promo Week"' }
-mimi.db.name_obtained["Jolly Hellbug (A)"] = { obtained='World Event', details='Fae Yule World Event 2016' }
+mimi.db.name_obtained["Jineth"] = { obtained='Promo', details='"Complete ""Attractive Proposition"" Quest during Arclight Infiltration Promo Week. Attracts Artifact Adventures specific to the Promo Week"' }
+mimi.db.name_obtained["Jolly Hellbug"] = { obtained='World Event', details='Fae Yule World Event 2016' }
 mimi.db.name_obtained["Joloral Ragetide"] = { obtained='PvP', details='From Marauders Supply Cache (gained by winning Lvl 60+ PvP Warfronts)' }
 mimi.db.name_obtained["Kaerth"] = { obtained='Zone Event Drop', details='' }
 mimi.db.name_obtained["Kallos"] = { obtained='Mob Drop', details='From Ridgeline Stoneface in Crescent Ridge - Shimmersand (so probs random mob drop)' }
-mimi.db.name_obtained["Keavy (H)"] = { obtained='World Event', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
+mimi.db.name_obtained["Keavy"] = { obtained='World Event', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
 mimi.db.name_obtained["Kepple"] = { obtained='Fishing', details='Can be fished up using Stan\'s Super Secret Lure.' }
 mimi.db.name_obtained["Kiljurn"] = { obtained='Achievement', details='Red Tide' }
 mimi.db.name_obtained["Killthraxus"] = { obtained='Rift Store', details='Requires Bailghol: Decorated' }
@@ -122,21 +120,21 @@ mimi.db.name_obtained["Lecu the Claw"] = { obtained='PvP', details='From Maraude
 mimi.db.name_obtained["Lil Reggie"] = { obtained='Rift Drop', details='Nightmare Rift drop. Received from Nightmare Rift Cache drop.' }
 mimi.db.name_obtained["Living Vine Wall"] = { obtained='Zone Event Drop', details='Cracking Xarth\'s Skull' }
 mimi.db.name_obtained["Lord Vyre"] = { obtained='Rift Drop', details='Nightmare Rift drop. Received from Nightmare Rift Cache drop.' }
-mimi.db.name_obtained["Lucile (A)"] = { obtained='RIFT Store', details='Gained from RIFT Store -> Pets -> Minion' }
+mimi.db.name_obtained["Lucile"] = { obtained='RIFT Store', details='Gained from RIFT Store -> Pets -> Minion' }
 mimi.db.name_obtained["Lugglaga"] = { obtained='Rift Drop', details='Nightmare Rift drop. Received from Rift Loot Bag.' }
-mimi.db.name_obtained["Lyle (A)"] = { obtained='Crafted', details='RIFT Store -> Crafting -> Armorsmith. Use \'Minions\' filter.' }
+mimi.db.name_obtained["Lyle"] = { obtained='Crafted', details='RIFT Store -> Crafting -> Armorsmith. Use \'Minions\' filter.' }
 mimi.db.name_obtained["Mael Salach"] = { obtained='Achievement', details='The once and the future dragon' }
 mimi.db.name_obtained["Magmus"] = { obtained='RIFT Store', details='Requires Cerulean Rhenke: Friendly' }
 mimi.db.name_obtained["Makirn"] = { obtained='PvP', details='From Rift Loot Bag whilst PvPing.' }
 mimi.db.name_obtained["Marile"] = { obtained='Rift/IA Drop', details='Nightmare Rift drop. Received from Nightmare Rift Cache drop. Also drops from IAs (Freemarch/etc)' }
 mimi.db.name_obtained["Mark"] = { obtained='Puzzle/Artifact', details='"Gained from Nightmare Tide Puzzle chest after 1st time. Also from ""Wedding Gifts of Shadow Scion"" Artifact Set."' }
-mimi.db.name_obtained["Martin (A)"] = { obtained='RIFT Store', details='Gained from RIFT Store -> Pets -> Minion' }
+mimi.db.name_obtained["Martin"] = { obtained='RIFT Store', details='Gained from RIFT Store -> Pets -> Minion' }
 mimi.db.name_obtained["Martrodraum"] = { obtained='RIFT Store', details='Requires Manugo League: Friendly' }
 mimi.db.name_obtained["Mech Anik"] = { obtained='Achievement', details='"From ""Capacitor Competency"" achievement gained during Arclight Ascendency Promo Weeks."' }
 mimi.db.name_obtained["Michael Bringhurst"] = { obtained='Rift Store', details='Requires Planar Defense Force: Revered' }
-mimi.db.name_obtained["Milkweed (A)"] = { obtained='Crafted', details='RIFT Store -> Crafting -> Outfitter. Use \'Minions\' filter.' }
+mimi.db.name_obtained["Milkweed"] = { obtained='Crafted', details='RIFT Store -> Crafting -> Outfitter. Use \'Minions\' filter.' }
 mimi.db.name_obtained["Misty"] = { obtained='RIFT Store', details='Requires Atragarians: Friendly' }
-mimi.db.name_obtained["Mitch (A)"] = { obtained='World Event', details='From Summerfest World Event 2016. Temporary found RIFT Store -> World Event for Credits' }
+mimi.db.name_obtained["Mitch"] = { obtained='World Event', details='From Summerfest World Event 2016. Temporary found RIFT Store -> World Event for Credits' }
 mimi.db.name_obtained["Moltarr"] = { obtained='RIFT Store', details='Requires Pelagic Order: Decorated' }
 mimi.db.name_obtained["Mongrok"] = { obtained='Artifact Set', details='Bloodfire Soldier Kit (61)' }
 mimi.db.name_obtained["Morid Finric"] = { obtained='Achievement', details='Conqeuror: The Rhen of Fate Achievement. Bind on Pickup.' }
@@ -151,14 +149,13 @@ mimi.db.name_obtained["Nessie"] = { obtained='Fishing', details='Fished up using
 mimi.db.name_obtained["Nightbringer"] = { obtained='World Event', details='"Fae Yule World Event 2014. Part of ""2014 Fae Yule Minion Adventure Pack"" in RIFT Store."' }
 mimi.db.name_obtained["Nipper"] = { obtained='RIFT Store', details='"From ""Minion Starter Pack"""' }
 mimi.db.name_obtained["Nixtoc"] = { obtained='RIFT Store', details='Requires Cerulean Rhenke: Decorated' }
-mimi.db.name_obtained["Noggol the Tainted"] = { obtained='',
-details='' }
+mimi.db.name_obtained["Noggol the Tainted"] = { obtained='', details='' }
 mimi.db.name_obtained["Noxie"] = { obtained='Rift Drop', details='Nightmare Rift drop.' }
-mimi.db.name_obtained["Nyor'tothgylu (H)"] = { obtained='World Event', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
+mimi.db.name_obtained["Nyor'tothgylu"] = { obtained='World Event', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
 mimi.db.name_obtained["Oblivia"] = { obtained='RIFT Store', details='Gained from RIFT Store -> Pets -> Minions' }
 mimi.db.name_obtained["Omi"] = { obtained='Puzzle', details='Gained from Goboro Reef Puzzle as random drop from the chest after your first-time reward.' }
 mimi.db.name_obtained["Opheline"] = { obtained='RIFT Store', details='Requires The Onir: Friendly' }
-mimi.db.name_obtained["Opie (A)"] = { obtained='RIFT Vendor', details='Tenebrian Mistery Box (SFP launch)' }
+mimi.db.name_obtained["Opie"] = { obtained='RIFT Vendor', details='Tenebrian Mistery Box (SFP launch)' }
 mimi.db.name_obtained["Orlan"] = { obtained='Chest Drop', details='Chance drop from \'Hidden Chest\' and/or the rare mob Blightbread in Chronicle: Intrepid: Greenscale\'s Blight.' }
 mimi.db.name_obtained["Ornipteryx"] = { obtained='Puzzle', details='Gained from Nightmare Tide Puzzle chest after 1st time.' }
 mimi.db.name_obtained["Patches"] = { obtained='Fishing', details='Fished up using Uncle Stan\'s Secret Lure or Lure of Planar Distortion.' }
@@ -177,10 +174,10 @@ mimi.db.name_obtained["Qu'ella the Wretched"] = { obtained='World Event', detail
 mimi.db.name_obtained["Quaq"] = { obtained='Zone Event Drop', details='"Drops from Zone Event in Rift Loot Bag. Might be any NT zone' }
 mimi.db.name_obtained["Queen Zr'Bzz"] = { obtained='Mob Drop', details='Dropped from Sharptalon Windwitch in Howling Plateau and Keenblade Machinist & Keenblade Millhand in Scarwood Reach.' }
 mimi.db.name_obtained["Quetzie"] = { obtained='RIFT Store', details='Gained from RIFT Store -> Pets -> Minions' }
-mimi.db.name_obtained["Ra'Aran of Fate (H)"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
+mimi.db.name_obtained["Ra'Aran of Fate"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
 mimi.db.name_obtained["Ranger Fahrand"] = { obtained='PvP', details='From Marauders Supply Cache (gained by winning Lvl 60+ PvP Warfronts)' }
-mimi.db.name_obtained["Rashboil (H)"] = { obtained='World Event', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
-mimi.db.name_obtained["Ravi (H)"] = { obtained='World Event', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
+mimi.db.name_obtained["Rashboil"] = { obtained='World Event', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
+mimi.db.name_obtained["Ravi"] = { obtained='World Event', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
 mimi.db.name_obtained["Razorleaf Matriarch"] = { obtained='Zone Event Drop', details='Cracking Xarth\'s Skull' }
 mimi.db.name_obtained["Reginald"] = { obtained='Achievement', details='A Prowed Moment' }
 mimi.db.name_obtained["Rirnef"] = { obtained='Quest', details='Questionable Allegiances from Finric at Port Scuddra in Tarken Glacier.' }
@@ -188,15 +185,15 @@ mimi.db.name_obtained["Ritualist Madina"] = { obtained='PvP', details='From Mara
 mimi.db.name_obtained["Roshin"] = { obtained='IA Drop', details='From Instant Adventures.' }
 mimi.db.name_obtained["Rough Raptor"] = { obtained='Promo', details='From Extra Life 2014 charity contest prize.' }
 mimi.db.name_obtained["Rudy"] = { obtained='World Event', details='"Fae Yule World Event 2014. Part of ""2014 Fae Yule Minion Adventure Pack"" in RIFT Store."' }
-mimi.db.name_obtained["Runald (A)"] = { obtained='Crafted', details='RIFT Store -> Crafting -> Runecrafter. Check \'Minions\' filter.' }
+mimi.db.name_obtained["Runald"] = { obtained='Crafted', details='RIFT Store -> Crafting -> Runecrafter. Check \'Minions\' filter.' }
 mimi.db.name_obtained["Rusila Dreadblade"] = { obtained='',
 details='' }
-mimi.db.name_obtained["Ryuu (A)"] = { obtained='RIFT Store', details='Gained from RIFT Store -> Pets -> Minions' }
+mimi.db.name_obtained["Ryuu"] = { obtained='RIFT Store', details='Gained from RIFT Store -> Pets -> Minions' }
 mimi.db.name_obtained["Salvarola"] = { obtained='RIFT Store', details='Requires Manugo League: Revered' }
 mimi.db.name_obtained["Scarbite"] = { obtained='Achievement', details='The Dreaming Seas' }
 mimi.db.name_obtained["Scarn"] = { obtained='RIFT Store', details='Requires Thedeor\'s Spear: Decorated' }
 mimi.db.name_obtained["Scythe"] = { obtained='World Event', details='From Autumn Harvest World Event 2014. Temporary found RIFT Store -> World Event' }
-mimi.db.name_obtained["Seoras (H)"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
+mimi.db.name_obtained["Seoras"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
 mimi.db.name_obtained["Sharad X9"] = { obtained='Achievement', details='Getting Ahead in Tarken' }
 mimi.db.name_obtained["Shelath"] = { obtained='Rift Drop', details='Nightmare Rift drop. Received from Nightmare Rift III Rift Loot Bag.' }
 mimi.db.name_obtained["Shourloth"] = { obtained='Rift Store', details='Requires Thedeor\'s Spear: Revered' }
@@ -217,14 +214,14 @@ mimi.db.name_obtained["Steamskin"] = { obtained='Mob Drop', details='"Drop from 
 mimi.db.name_obtained["Stofie"] = { obtained='Quest', details='"Minion starter quest at (12761' }
 mimi.db.name_obtained["Styxoris"] = { obtained='RIFT Store', details='Requires The Onir: Decorated.' }
 mimi.db.name_obtained["Sulfus"] = { obtained='Achievement', details='Dream Walking. Also from Draumheim Puzzle reward bag.' }
-mimi.db.name_obtained["Sundereth (H)"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
+mimi.db.name_obtained["Sundereth"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
 mimi.db.name_obtained["Swarmlord Khargroth"] = { obtained='World Event', details='Summerfest' }
 mimi.db.name_obtained["Tagonia"] = { obtained='PvP', details='From Marauders Supply Cache (gained by winning Lvl 60+ PvP Warfronts)' }
 mimi.db.name_obtained["Tas'toni"] = { obtained='Mob Drop', details='From Abyssal Commanders and Cabalists in Fortune\'s End in Meridian.' }
 mimi.db.name_obtained["Taskmaster Atrophinius"] = { obtained='World Event', details='Gained from RIFT Store -> World Event during Autumn Harvest for 750 Credits (675 for Patrons).' }
-mimi.db.name_obtained["Tasuil (H)"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
+mimi.db.name_obtained["Tasuil"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
 mimi.db.name_obtained["Tavanion"] = { obtained='Puzzle', details='Gained from Nightmare Tide Puzzle chest after 1st time.' }
-mimi.db.name_obtained["The Golden Devourer (H)"] = { obtained='World Event', details='Special version of Senbora the Devourer open raid boss in The Dendrome at Greenscale\'s Crater. Only available during Fae Yule World Event.' }
+mimi.db.name_obtained["The Golden Devourer"] = { obtained='World Event', details='Special version of Senbora the Devourer open raid boss in The Dendrome at Greenscale\'s Crater. Only available during Fae Yule World Event.' }
 mimi.db.name_obtained["The Hag of Gloamwood"] = { obtained='World Event', details='Gained from the Autumn Harvest Minion Adventure Chain that starts with Minion Card: Taskmaster Atrophinius.' }
 mimi.db.name_obtained["The Nightstalker"] = { obtained='World Event', details='Gained from the Autumn Harvest Minion Adventure Chain that starts with Minion Card: Taskmaster Atrophinius.' }
 mimi.db.name_obtained["The Nuclei"] = { obtained='RIFT Store', details='Requires Planar Defense Force: Decorated' }
@@ -246,7 +243,7 @@ mimi.db.name_obtained["Welt"] = { obtained='Rift/IA Drop', details='Nightmare Ri
 mimi.db.name_obtained["Wicket"] = { obtained='Quest', details='The Eternal Weapon: A Sticky Wicket' }
 mimi.db.name_obtained["Wilson"] = { obtained='RIFT Store', details='Gained from RIFT Store -> Pets -> Minions' }
 mimi.db.name_obtained["Xandill"] = { obtained='RIFT Store', details='Requires The Ghar: Decorated' }
-mimi.db.name_obtained["Xharlion (H)"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
+mimi.db.name_obtained["Xharlion"] = { obtained='Hidden Minion', details='"Please refer to the ""Hidden Minion Cards"" tab for full information."' }
 mimi.db.name_obtained["Xorixla"] = { obtained='Rift Drop', details='Nightmare Rift drop. Received from Nightmare Rift Cache.' }
 mimi.db.name_obtained["Yarjos Mezrot"] = { obtained='RIFT Store', details='Requires Cerulean Rhenke: Decorated' }
 mimi.db.name_obtained["Yoodipti"] = { obtained='Artifact Set', details='Draum\'s Tropical Dreams (61)' }
