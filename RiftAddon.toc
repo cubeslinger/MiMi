@@ -1,7 +1,7 @@
 Identifier  =  "MiMi"
 Name        =  { English = "MiMi" }
 NameShort   =  "CuT"
-Version     =  "0.0.2"
+Version     =  "0.0.3"
 Description =  { English = "Missing Minions" }
 Author      =  "marcob@marcob.org"
 Website     =  "https://github.com/cubeslinger/MiMi"
@@ -9,10 +9,11 @@ Email       =  "marcob@marcob.org"
 Environment =  "4.0"
 
 RunOnStartup = {
+   "_mimi_init.lua",
+   "_mimi_minimapbutton.lua",
    "_mimi_name-obtained.lua",
    "MiMi.lua",
 }
-
 
 Dependencies = {
   LibDraggable = {"required", "before"},
