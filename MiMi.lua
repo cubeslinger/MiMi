@@ -42,8 +42,8 @@ local function createwindow()
 --    mimimaskinfo:SetPoint("BOTTOMRIGHT", mimiextframe, "BOTTOMRIGHT", 0, -mimi.gui.border.bottom)
    mimimaskinfo:SetPoint("TOPLEFT",     mimiextframe, "BOTTOMLEFT",  0, -(mimi.gui.infoheight))
    mimimaskinfo:SetPoint("TOPRIGHT",    mimiextframe, "BOTTOMRIGHT", 0, -(mimi.gui.infoheight))
-   mimimaskinfo:SetPoint("BOTTOMLEFT",  mimiextframe, "BOTTOMLEFT",  0, 0)
-   mimimaskinfo:SetPoint("BOTTOMRIGHT", mimiextframe, "BOTTOMRIGHT", 0, 0)
+   mimimaskinfo:SetPoint("BOTTOMLEFT",  mimiextframe, "BOTTOMLEFT")
+   mimimaskinfo:SetPoint("BOTTOMRIGHT", mimiextframe, "BOTTOMRIGHT")
 
 
    -- INFO FRAME
