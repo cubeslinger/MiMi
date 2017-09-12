@@ -13,12 +13,12 @@ mimi.gui                =  {}
 mimi.gui.font           =  {}
 mimi.gui.font.size      =  12
 mimi.gui.border         =  {}
-mimi.gui.border.left    =  12
-mimi.gui.border.right   =  12
-mimi.gui.border.top     =  54
-mimi.gui.border.bottom  =  12
+mimi.gui.border.left    =  4
+mimi.gui.border.right   =  4
+mimi.gui.border.top     =  38
+mimi.gui.border.bottom  =  4
 mimi.gui.scroll         =  {}
-mimi.gui.scroll.width   =  4
+mimi.gui.scroll.width   =  14
 mimi.gui.visible        =  false
 mimi.gui.mmbtnheight    =  38
 mimi.gui.mmbtnwidth     =  38
@@ -28,10 +28,13 @@ mimi.gui.infoheight     =  150
 mimi.gui.winobj         =  nil
 mimi.gui.winx           =  nil
 mimi.gui.winy           =  nil
-mimi.gui.winh           =  550
-mimi.gui.winw           =  300
+mimi.gui.winh           =  500
+mimi.gui.winw           =  350
 mimi.gui.mmbtnx         =  nil
 mimi.gui.mmbtny         =  nil
+mimi.gui.name           =  nil
+mimi.gui.obtained       =  nil
+mimi.gui.detail         =  nil
 --
 
 function mimi.round(num, digits)

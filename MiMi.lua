@@ -13,8 +13,8 @@ local function createwindow()
    local mimiwin	   =  UI.CreateFrame("Frame", "MiMi", mimicontext)
 --    mimiwin:SetTitle("MiMi")
    mimiwin:SetHeight(mimi.gui.winh)
-   mimiwin:SetWidth(mimi.gui.winh)
-   mimiwin:SetBackgroundColor(0, 0, 0, .1)
+   mimiwin:SetWidth(mimi.gui.winw)
+   mimiwin:SetBackgroundColor(0, 0, 0, .5)
    mimiwin:SetLayer(0)
    if mimi.gui.winx == nil or mimi.gui.winy == nil then
       -- first run, we position in the screen center
@@ -32,7 +32,7 @@ local function createwindow()
    mimiextframe:SetPoint("BOTTOMRIGHT", mimiwin, "BOTTOMRIGHT",   -mimi.gui.border.right,  -mimi.gui.border.bottom)
    mimiextframe:SetLayer(1)
 --    mimiextframe:SetBackgroundColor(0, 0, 2, .5)
-   mimiextframe:SetBackgroundColor(.1, .1, .1, .1)
+   mimiextframe:SetBackgroundColor(.1, .1, .1, .5)
 
    -- MASK FRAME
    local mimimaskframe = UI.CreateFrame("Mask", "mimi_mask_frame", mimiextframe)
@@ -64,6 +64,27 @@ local function createwindow()
    mimiinfoframe:SetBackgroundColor(.3, .3, .3, .7)
    mimiinfoframe:SetLayer(2)
 
+      local miminame  =  UI.CreateFrame("Text", "mimi_name", mimiinfoframe)
+      miminame:SetFontSize(mimi.gui.font.size)
+      miminame:SetLayer(3)
+      miminame:SetPoint("TOPLEFT", mimiinfoframe, "TOPLEFT",  mimi.gui.border.left, 0)
+      mimi.gui.name  =  miminame
+
+      local mimiobtained  =  UI.CreateFrame("Text", "mimi_obtained", mimiinfoframe)
+      mimiobtained:SetFontSize(mimi.gui.font.size)
+      mimiobtained:SetLayer(3)
+      mimiobtained:SetPoint("TOPRIGHT", mimiinfoframe, "TOPRIGHT",  -mimi.gui.border.right, 0)
+      mimi.gui.obtained =  mimiobtained
+
+      -- Detail Field
+      local mimidetail  =  UI.CreateFrame("Text", "mimi_detail", mimiinfoframe)
+      mimidetail:SetFontSize(mimi.gui.font.size)
+      mimidetail:SetLayer(3)
+      mimidetail:SetPoint("TOPLEFT",   miminame,      "BOTTOMLEFT")
+      mimidetail:SetPoint("TOPRIGHT",  mimiobtained,  "BOTTOMRIGHT")
+      mimidetail:SetWordwrap(true)
+      mimi.gui.detail   =  mimidetail
+
    -- ITEMS SCROLLBAR
    mimiscroll = UI.CreateFrame("RiftScrollbar","mimi_scrollbar", mimiextframe)
    mimiscroll:SetVisible(true)
@@ -85,10 +106,25 @@ local function createwindow()
    return mimiwin, mimiframe, mimiinfoframe, mimiscroll
 end
 
+
+function mimi.showdetail(minionname)
+   mimi.gui.name:SetText("")
+   mimi.gui.name:SetText(minionname)
+   --
+   mimi.gui.obtained:SetText("")
+   mimi.gui.obtained:SetText(mimi.db[minionname].obtained)
+   --
+   mimi.gui.detail:SetText("")
+   mimi.gui.detail:SetText(mimi.db[minionname].details)
+
+   return
+end
+
 local function createline(number, minionname, miniontbl, mimiframe)
 
    local missingframe   =  UI.CreateFrame("Frame", "mimilineframe", mimiframe)
    missingframe:SetHeight(mimi.gui.font.size*2)
+   missingframe:EventAttach(Event.UI.Input.Mouse.Left.Click, function() mimi.showdetail(minionname) end, "Show/Hide Pressed" )
 
    local num           =  UI.CreateFrame("Text", "missingminionnum",   missingframe)
    num:SetFontSize(mimi.gui.font.size)
@@ -190,3 +226,40 @@ end
 -- table.insert(Command.Slash.Register("mimi"), {function (params) mimi.searchformissing(params)   end, mimi.addon, "Search Missing Minions"})
    table.insert(Command.Slash.Register("mimi"), {function() mimi.showhidewindow() end, mimi.addon, "Search Missing Minions"})
 
+--[[
+function()
+   local pos = cD.round(cD.sCACFrames.cacheitemsscroll:GetPosition())
+   local smin, smax = cD.sCACFrames.cacheitemsscroll:GetRange()
+   if pos == smin  then
+      cD.sCACFrames.cacheitemsframe:ClearPoint("TOPLEFT")
+      cD.sCACFrames.cacheitemsframe:ClearPoint("BOTTOMLEFT")
+      cD.sCACFrames.cacheitemsframe:SetPoint("TOPLEFT",      cD.sCACFrames.cacheitemsmaskframe, "TOPLEFT")
+   else
+      if (cD.sCACFrames.cacheitemsframe:GetBottom() - ilScrollStep*pos) >= cD.sCACFrames.cacheitemsmaskframe:GetTop() then
+      cD.sCACFrames.cacheitemsframe:ClearPoint("TOPLEFT")
+      cD.sCACFrames.cacheitemsframe:ClearPoint("BOTTOMLEFT")
+      cD.sCACFrames.cacheitemsframe:SetPoint("TOPLEFT", cD.sCACFrames.cacheitemsmaskframe, "TOPLEFT", 0, -(ilScrollStep*pos) )
+   end
+   end
+-- end
+
+]]--
+
+
+-- function()
+--    local pos = mimi.round(mimiscroll:GetPosition())
+--    local smin, smax = mimiscroll:GetRange()
+--    if pos == smin  then
+--       mimiframe:ClearPoint("TOPLEFT")
+--       mimiframe:ClearPoint("BOTTOMLEFT")
+--       mimiframe:SetAllPoints(mimimaskframe)
+--    else
+-- --       -math.floor((mimi.gui.font.size*2) * pos)
+--       if (mimiframe:GetBottom() - (math.floor((mimi.gui.font.size*2) * pos)) >= mimimaskframe:GetTop() then
+--          miiframe:ClearPoint("TOPLEFT")
+--          mimiframe:ClearPoint("BOTTOMLEFT")
+-- --          mimiframe:SetPoint("TOPLEFT", mimi.sCACFrames.cacheitemsmaskframe, "TOPLEFT", 0, -(ilScrollStep*pos) )
+--          mimiframe:SetPoint("TOPLEFT", mimimaskframe, "TOPLEFT", 0, -math.floor((mimi.gui.font.size*2) * pos) )
+--       end
+--    end
+-- end,
