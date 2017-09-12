@@ -15,6 +15,10 @@ RunOnStartup = {
    "MiMi.lua",
 }
 
+Embed = {
+  LibDraggable = true,
+}
+
 Dependencies = {
   LibDraggable = {"required", "before"},
 }
