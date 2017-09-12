@@ -43,6 +43,7 @@ function mimi.createminimapbutton()
       mmbuttonborder:SetLayer(1)
       mmbuttonborder:EventAttach(Event.UI.Input.Mouse.Left.Click, function() mimi.showhidewindow() end, "Show/Hide Pressed" )
 
+      print(string.format("mimi.gui.mmbtnx=%s mimi.gui.mmbtny=%s", mimi.gui.mmbtnx, mimi.gui.mmbtny))
       if mimi.gui.mmbtnx == nil or mimi.gui.mmbtny == nil then
          -- first run, we position in the screen center
          mmbuttonborder:SetPoint("CENTER", UIParent, "CENTER")

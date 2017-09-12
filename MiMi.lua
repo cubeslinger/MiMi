@@ -11,7 +11,6 @@ local function createwindow()
    local mimicontext =  UI.CreateContext("mimi_context")
 --    local mimiwin	   =  UI.CreateFrame("RiftWindow", "MiMi", mimicontext)
    local mimiwin	   =  UI.CreateFrame("Frame", "MiMi", mimicontext)
---    mimiwin:SetTitle("MiMi")
    mimiwin:SetHeight(mimi.gui.winh)
    mimiwin:SetWidth(mimi.gui.winw)
    mimiwin:SetBackgroundColor(0, 0, 0, .5)
@@ -21,7 +20,7 @@ local function createwindow()
       mimiwin:SetPoint("CENTER", UIParent, "CENTER")
    else
       -- we have coordinates
-      mimiwin:SetPoint("TOPLEFT", UIParent, "TOPLEFT", mimi.gui.winx or 0, mimi.gui.winy or 0)
+      mimiwin:SetPoint("TOPLEFT", UIParent, "TOPLEFT", mimi.gui.winx, mimi.gui.winy)
    end
 
    -- EXTERNAL CUT CONTAINER FRAME
@@ -95,9 +94,15 @@ local function createwindow()
    mimiscroll:SetPoint("BOTTOMRIGHT",  mimiextframe,  "TOPRIGHT", 0, mimi.gui.panelheight)
    mimiscroll:EventAttach(   Event.UI.Scrollbar.Change,
                            function()
-                              local pos = mimiscroll:GetPosition()
-                              print("pos ("..pos..")")
-                              mimiframe:SetPoint("TOPLEFT", mimimaskframe, "TOPLEFT", 0, -math.floor((mimi.gui.font.size*2) * pos) )
+                              local pos = mimi.round(mimiscroll:GetPosition())
+                              if pos ~= mimi.gui.scroll.lastpos then
+                                 mimi.gui.scroll.lastpos =  pos
+                                 print("pos ("..pos..")")
+--                                  local newy  =  -math.floor((mimi.gui.font.size*2) * pos)
+                                 local newy  =  -math.floor(mimi.gui.listeleheight * pos)
+--                                  mimiframe:SetPoint("TOPLEFT", mimimaskframe, "TOPLEFT", 0, -math.floor((mimi.gui.font.size*2) * pos) )
+                                 mimiframe:SetPoint("TOPLEFT", mimimaskframe, "TOPLEFT", 0, newy )
+                              end
                            end,
                            "TotalsFrame_Scrollbar.Change"
                         )
@@ -163,6 +168,10 @@ local function populatemissinglist(missingtbl, mimiframe)
       cnt = cnt + 1
 --       print(string.format("name=%s tbl=%s", name, tbl))
       local line = createline(cnt, name, tbl, mimiframe)
+      if not mimi.gui.listeleheight  then
+         mimi.gui.listeleheight  =  line:GetHeight()
+         print("mimi.gui.listeleheight("..mimi.gui.listeleheight..")")
+      end
 
       if lastline then
          line:SetPoint("TOPLEFT",  lastline, "BOTTOMLEFT")
@@ -211,9 +220,6 @@ function mimi.searchformissing()
          end
       end
 
---       if found then
---          collected = collected + 1
---       else
       if not found then
          missing   = missing   + 1
          missingtbl[name] = tbl
@@ -221,7 +227,6 @@ function mimi.searchformissing()
       found =  false
    end
 
---    print(string.format("MiMi Total: %s, Collected: %s, Missing: %s", total, collected, missing))
    print(string.format("MiMi Total: %s, Collected: %s, Missing: %s OutofDb: %s", total, collected, missing, outofdbno))
    if (#outofdb > 0) then for _, myname in pairs(outofdb) do print(string.format("  outofdb: %s", myname)) end end
 
@@ -238,48 +243,6 @@ function mimi.searchformissing()
    return
 end
 
-if not mimi.gui.mmbtnobj then
-   mimi.gui.mmbtnobj =  mimi.createminimapbutton()
---    mimi.makeDraggable(mimi.gui.mmbtnobj)
-end
-
--- table.insert(Command.Slash.Register("mimi"), {function (params) mimi.searchformissing(params)   end, mimi.addon, "Search Missing Minions"})
-   table.insert(Command.Slash.Register("mimi"), {function() mimi.showhidewindow() end, mimi.addon, "Search Missing Minions"})
-
---[[
-function()
-   local pos = cD.round(cD.sCACFrames.cacheitemsscroll:GetPosition())
-   local smin, smax = cD.sCACFrames.cacheitemsscroll:GetRange()
-   if pos == smin  then
-      cD.sCACFrames.cacheitemsframe:ClearPoint("TOPLEFT")
-      cD.sCACFrames.cacheitemsframe:ClearPoint("BOTTOMLEFT")
-      cD.sCACFrames.cacheitemsframe:SetPoint("TOPLEFT",      cD.sCACFrames.cacheitemsmaskframe, "TOPLEFT")
-   else
-      if (cD.sCACFrames.cacheitemsframe:GetBottom() - ilScrollStep*pos) >= cD.sCACFrames.cacheitemsmaskframe:GetTop() then
-      cD.sCACFrames.cacheitemsframe:ClearPoint("TOPLEFT")
-      cD.sCACFrames.cacheitemsframe:ClearPoint("BOTTOMLEFT")
-      cD.sCACFrames.cacheitemsframe:SetPoint("TOPLEFT", cD.sCACFrames.cacheitemsmaskframe, "TOPLEFT", 0, -(ilScrollStep*pos) )
-   end
-   end
--- end
-
-]]--
-
-
--- function()
---    local pos = mimi.round(mimiscroll:GetPosition())
---    local smin, smax = mimiscroll:GetRange()
---    if pos == smin  then
---       mimiframe:ClearPoint("TOPLEFT")
---       mimiframe:ClearPoint("BOTTOMLEFT")
---       mimiframe:SetAllPoints(mimimaskframe)
---    else
--- --       -math.floor((mimi.gui.font.size*2) * pos)
---       if (mimiframe:GetBottom() - (math.floor((mimi.gui.font.size*2) * pos)) >= mimimaskframe:GetTop() then
---          miiframe:ClearPoint("TOPLEFT")
---          mimiframe:ClearPoint("BOTTOMLEFT")
--- --          mimiframe:SetPoint("TOPLEFT", mimi.sCACFrames.cacheitemsmaskframe, "TOPLEFT", 0, -(ilScrollStep*pos) )
---          mimiframe:SetPoint("TOPLEFT", mimimaskframe, "TOPLEFT", 0, -math.floor((mimi.gui.font.size*2) * pos) )
---       end
---    end
--- end,
+Command.Event.Attach(Event.Addon.SavedVariables.Load.End,   mimi.loadvariables,   "MiMi: Load Variables")
+Command.Event.Attach(Event.Addon.SavedVariables.Save.Begin, mimi.savevariables,   "MiMi: Load Variables")
+Command.Event.Attach(Event.Unit.Availability.Full, function() mimi.gui.mmbtnobj =  mimi.createminimapbutton() end,       "CuT: Init Coin Base")
