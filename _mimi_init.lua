@@ -49,8 +49,8 @@ function updateguicoordinates(win, x, y)
    if win ~= nil then
       local winname = win:GetName()
       if winname  == "MiMi" then
-         mimi.gui.winx   =  mimi.round(x)
-         mimi.gui.winy   =  mimi.round(y)
+         mimi.gui.winx   = mimi.round(x)
+         mimi.gui.winy   =	mimi.round(y)
       end
 
       if winname == "mimi_mmBtnFrame" then
@@ -64,27 +64,30 @@ end
 
 
 function mimi.loadvariables(_, addonname)
-   print("1 mimi.loadvariables")
+   print("1 mimi.loadvariables ("..addonname..")")
    if addon.name == addonname then
 
       if gui then
-         print("2 mimi.loadvariables")
+         print("2 mimi.loadvariables ("..addonname..")")
          local key, val = nil, nil
-         for key, val in pairs(gui) do   mimi.gui[key]   =  val end
+         for key, val in pairs(gui) do
+            mimi.gui[key]   =  val
+         end
       end
    end
    return
 end
 
 function mimi.savevariables(_, addonname)
-   print("1 mimi.savevariables")
+   print("1 mimi.savevariables ("..addonname..")")
    if addon.name == addonname then
-      print("2 mimi.savevariables")
+      print("2 mimi.savevariables ("..addonname..")")
       local a     =  {}
       a[winx]     =  mimi.gui.winx
       a[winy]     =  mimi.gui.winy
       a[mmbtnx]   =  mimi.gui.mmbtnx
       a[mmbtny]   =  mimi.gui.mmbtny
+      a[visible]  =  mimi.gui.visible
 
       gui   =  a
    end
@@ -137,5 +140,5 @@ function mimi.makeDraggable(window)
 end
 
 Command.Event.Attach(Event.Addon.SavedVariables.Load.End,   mimi.loadvariables,   "MiMi: Load Variables")
-Command.Event.Attach(Event.Addon.SavedVariables.Save.End,   mimi.savevariables,   "MiMi: Load Variables")
+Command.Event.Attach(Event.Addon.SavedVariables.Save.Begin, mimi.savevariables,   "MiMi: Load Variables")
 

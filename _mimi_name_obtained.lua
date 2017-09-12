@@ -225,7 +225,7 @@ mimi.db["Thexahel"] = { ["life"]="", ["diplomacy"]="", ["harvesting"]="", ["dime
 mimi.db["Tiller"] = { ["obtained"]="Mob Drop", ["details"]="Rift or Mob drop from Silverwood.",  }
 mimi.db["Tobbler"] = { ["obtained"]="RIFT Store", ["details"]="Gained from RIFT Store -> Pets -> Minions",  }
 mimi.db["Tsathtosa"] = { ["obtained"]="PvP", ["details"]="From Marauders Supply Cache (gained by winning Lvl 60+ PvP Warfronts)",  }
-mimi.db["Tweop"] = { ["obtained"]="Mob Drop", ["details"]="Dropped from rare mob \'Gnarl Nighthunter\' in Gloamwood.",  }
+mimi.db["Tewop"] = { ["obtained"]="Mob Drop", ["details"]="Dropped from rare mob \'Gnarl Nighthunter\' in Gloamwood.",  }
 mimi.db["Twist"] = { ["obtained"]="Achievement", ["details"]="Shucking Shrimp",  }
 mimi.db["Tzul"] = { ["obtained"]="RIFT Store", ["details"]="Requires Manugo League: Revered",  }
 mimi.db["Una"] = { ["obtained"]="RIFT Store", ["details"]="Requires The Onir: Friendly",  }

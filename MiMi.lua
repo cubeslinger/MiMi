@@ -96,6 +96,7 @@ local function createwindow()
    mimiscroll:EventAttach(   Event.UI.Scrollbar.Change,
                            function()
                               local pos = mimiscroll:GetPosition()
+                              print("pos ("..pos..")")
                               mimiframe:SetPoint("TOPLEFT", mimimaskframe, "TOPLEFT", 0, -math.floor((mimi.gui.font.size*2) * pos) )
                            end,
                            "TotalsFrame_Scrollbar.Change"
@@ -182,26 +183,47 @@ function mimi.searchformissing()
    local total          =  0
    local collected      =  0
    local missing        =  0
+   local outofdb        =  {}
+   local outofdbno      =  0
    local minions        =  Inspect.Minion.Minion.List()
    local found          =  false
    local missingtbl     =  {}
 
+   -- count collected and look for unknown minions
+   for id, _ in pairs(minions) do
+      collected = collected + 1
+
+--       print(string.format("Name is >%s<", name))
+      local myname   =  Inspect.Minion.Minion.Detail(id).name
+      if not mimi.db[myname] then
+         outofdbno   =  outofdbno + 1
+         table.insert(outofdb, myname)
+      end
+   end
+
    for name, tbl in pairs(mimi.db) do
       total = total + 1
       for id, _ in pairs(minions) do
-         local detail = Inspect.Minion.Minion.Detail(id) if name == detail.name then found = true break end
+         local detail = Inspect.Minion.Minion.Detail(id)
+         if name == detail.name then
+            found = true
+            break
+         end
       end
 
-      if found then
-         collected = collected + 1
-      else
+--       if found then
+--          collected = collected + 1
+--       else
+      if not found then
          missing   = missing   + 1
          missingtbl[name] = tbl
       end
       found =  false
    end
 
-   print(string.format("MiMi Total: %s, Collected: %s, Missing: %s", total, collected, missing))
+--    print(string.format("MiMi Total: %s, Collected: %s, Missing: %s", total, collected, missing))
+   print(string.format("MiMi Total: %s, Collected: %s, Missing: %s OutofDb: %s", total, collected, missing, outofdbno))
+   if (#outofdb > 0) then for _, myname in pairs(outofdb) do print(string.format("  outofdb: %s", myname)) end end
 
    local mimiwin, mimiframe, mimiinfoframe, mimiscroll = createwindow()
    mimi.gui.winobj   =  mimiwin
@@ -209,9 +231,7 @@ function mimi.searchformissing()
    mimi.gui.info     =  mimiinfoframe
    mimi.gui.scroll   =  mimiscroll
 
---    mimiscroll:SetRange(1, missing)
    mimi.gui.scroll:SetRange(1, missing)
---    ilScrollStep   =  cD.round(cD.sCACFrames.cacheitemsframe:GetHeight()/cnt)
 
    populatemissinglist(missingtbl, mimiframe)
 
