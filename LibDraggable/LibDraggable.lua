@@ -25,21 +25,21 @@ function Draggable.draggify(window, callback)
   end
 --   local border = window:GetBorder()
 --   local border = window
-  border:EventAttach(Event.UI.Input.Mouse.Left.Down, function(...) Draggable.leftdown(window, ...) end, "draggable_left_down")
+  border:EventAttach(Event.UI.Input.Mouse.Right.Down, function(...) Draggable.rightdown(window, ...) end, "draggable_right_down")
   border:EventAttach(Event.UI.Input.Mouse.Cursor.Move, function(...) Draggable.mousemove(window, ...) end, "draggable_mouse_move")
-  border:EventAttach(Event.UI.Input.Mouse.Left.Up, function(...) Draggable.leftup(window, ...) end, "draggable_left_up")
-  border:EventAttach(Event.UI.Input.Mouse.Left.Upoutside, function(...) Draggable.leftupoutside(window, ...) end, "draggable_left_upoutside")
+  border:EventAttach(Event.UI.Input.Mouse.Right.Up, function(...) Draggable.rightup(window, ...) end, "draggable_right_up")
+  border:EventAttach(Event.UI.Input.Mouse.Right.Upoutside, function(...) Draggable.rightupoutside(window, ...) end, "draggable_right_upoutside")
   Draggable.windows[window] = newtab
 end
 
-function Draggable.leftdown(window, event, ...)
+function Draggable.rightdown(window, event, ...)
   local win = Draggable.windows[window]
   if not win then
     Draggable.windows[window] = { dragging = false, x = 0, y = 0 }
     win = Draggable.windows[window]
   end
   win.dragging = true
-  win.win_x = window:GetLeft()
+  win.win_x = window:GetRight()
   win.win_y = window:GetTop()
   local l, t, r, b = window:GetBounds()
   window:ClearAll()
@@ -64,7 +64,7 @@ function Draggable.mousemove(window, event, ...)
   end
 end
 
-function Draggable.leftup(window, event, ...)
+function Draggable.rightup(window, event, ...)
   local win = Draggable.windows[window]
   if win then
     win.dragging = false
@@ -73,7 +73,7 @@ function Draggable.leftup(window, event, ...)
   end
 end
 
-function Draggable.leftupoutside(window, event, ...)
+function Draggable.rightupoutside(window, event, ...)
   local win = Draggable.windows[window]
   if win then
     win.dragging = false

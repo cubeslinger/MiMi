@@ -9,7 +9,6 @@ local addon, mimi = ...
 
 local function createwindow()
    local mimicontext =  UI.CreateContext("mimi_context")
---    local mimiwin	   =  UI.CreateFrame("RiftWindow", "MiMi", mimicontext)
    local mimiwin	   =  UI.CreateFrame("Frame", "MiMi", mimicontext)
    mimiwin:SetHeight(mimi.gui.winh)
    mimiwin:SetWidth(mimi.gui.winw)
@@ -30,7 +29,6 @@ local function createwindow()
    mimiextframe:SetPoint("BOTTOMLEFT",  mimiwin, "BOTTOMLEFT",    mimi.gui.border.left,   -mimi.gui.border.bottom)
    mimiextframe:SetPoint("BOTTOMRIGHT", mimiwin, "BOTTOMRIGHT",   -mimi.gui.border.right,  -mimi.gui.border.bottom)
    mimiextframe:SetLayer(1)
---    mimiextframe:SetBackgroundColor(0, 0, 2, .5)
    mimiextframe:SetBackgroundColor(.1, .1, .1, .5)
 
    -- MASK FRAME
@@ -44,7 +42,6 @@ local function createwindow()
    -- CONTAINER FRAME
    local mimiframe =  UI.CreateFrame("Frame", "mimi_frame", mimimaskframe)
    mimiframe:SetAllPoints(mimimaskframe)
---    mimiframe:SetBackgroundColor(2, 0, 0, .5)
    mimiframe:SetBackgroundColor(.3, .3, .3, .7)
    mimiframe:SetLayer(2)
 
@@ -96,12 +93,14 @@ local function createwindow()
                            function()
                               local pos = mimi.round(mimiscroll:GetPosition())
                               if pos ~= mimi.gui.scroll.lastpos then
-                                 mimi.gui.scroll.lastpos =  pos
-                                 print("pos ("..pos..")")
---                                  local newy  =  -math.floor((mimi.gui.font.size*2) * pos)
-                                 local newy  =  -math.floor(mimi.gui.listeleheight * pos)
---                                  mimiframe:SetPoint("TOPLEFT", mimimaskframe, "TOPLEFT", 0, -math.floor((mimi.gui.font.size*2) * pos) )
-                                 mimiframe:SetPoint("TOPLEFT", mimimaskframe, "TOPLEFT", 0, newy )
+                                 if pos == 1 then
+                                    mimiframe:SetAllPoints(mimimaskframe)
+                                 else
+                                    mimi.gui.scroll.lastpos =  pos
+--                                     print("pos ("..pos..")")
+                                    local newy  =  -math.floor(mimi.gui.listeleheight * pos)
+                                    mimiframe:SetPoint("TOPLEFT", mimimaskframe, "TOPLEFT", 0, newy )
+                                 end
                               end
                            end,
                            "TotalsFrame_Scrollbar.Change"
@@ -170,7 +169,7 @@ local function populatemissinglist(missingtbl, mimiframe)
       local line = createline(cnt, name, tbl, mimiframe)
       if not mimi.gui.listeleheight  then
          mimi.gui.listeleheight  =  line:GetHeight()
-         print("mimi.gui.listeleheight("..mimi.gui.listeleheight..")")
+--          print("mimi.gui.listeleheight("..mimi.gui.listeleheight..")")
       end
 
       if lastline then
@@ -227,22 +226,25 @@ function mimi.searchformissing()
       found =  false
    end
 
-   print(string.format("MiMi Total: %s, Collected: %s, Missing: %s OutofDb: %s", total, collected, missing, outofdbno))
-   if (#outofdb > 0) then for _, myname in pairs(outofdb) do print(string.format("  outofdb: %s", myname)) end end
-
    local mimiwin, mimiframe, mimiinfoframe, mimiscroll = createwindow()
    mimi.gui.winobj   =  mimiwin
    mimi.gui.frame    =  mimiframe
    mimi.gui.info     =  mimiinfoframe
    mimi.gui.scroll   =  mimiscroll
 
-   mimi.gui.scroll:SetRange(1, missing)
-
    populatemissinglist(missingtbl, mimiframe)
+
+   local h           =  mimiframe:GetHeight()
+   local perframe    =  mimi.round(h / mimi.gui.listeleheight)
+   local scrollsteps =  (missing - perframe) + 1
+   mimi.gui.scroll:SetRange(1, scrollsteps)
+
+   print(string.format("MiMi Total: %s, Collected: %s, Missing: %s OutofDb: %s", total, collected, missing, outofdbno))
+   if (#outofdb > 0) then for _, myname in pairs(outofdb) do print(string.format("  outofdb: %s", myname)) end end
 
    return
 end
 
 Command.Event.Attach(Event.Addon.SavedVariables.Load.End,   mimi.loadvariables,   "MiMi: Load Variables")
 Command.Event.Attach(Event.Addon.SavedVariables.Save.Begin, mimi.savevariables,   "MiMi: Load Variables")
-Command.Event.Attach(Event.Unit.Availability.Full, function() mimi.gui.mmbtnobj =  mimi.createminimapbutton() end,       "CuT: Init Coin Base")
+Command.Event.Attach(Event.Unit.Availability.Full, function() mimi.gui.mmbtnobj =  mimi.createminimapbutton() end, "MiMi: mimimap Button")

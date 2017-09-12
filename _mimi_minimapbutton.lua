@@ -6,11 +6,18 @@
 
 local addon, mimi = ...
 
-function mimi.showhidewindow(params)
-   if not mimi.gui.winobj then mimi.searchformissing() end
+function mimi.showhidewindow(visible)
 
-   if mimi.gui.visible == true   then  mimi.gui.visible   =  false
-                                 else  mimi.gui.visible   =  true
+   if not mimi.gui.winobj then
+      mimi.searchformissing()
+   end
+
+   if visible then
+      mimi.gui.visible   =  true
+   else
+      if mimi.gui.visible == true   then  mimi.gui.visible   =  false
+                                    else  mimi.gui.visible   =  true
+      end
    end
 
    mimi.gui.winobj:SetVisible(mimi.gui.visible)
@@ -26,40 +33,26 @@ function mimi.createminimapbutton()
       --       print(string.format("mimi.createMiniMapButton: mimi.gui.mmbtnobj=%s", mimi.gui.mmbtnobj))
 
       --Global context (parent frame-thing).
-      mmbtncontext = UI.CreateContext("button_context")
-
---       mmbuttonframe  = UI.CreateFrame("Frame", "mimi_mmBtnFrame", mmbtncontext)
---       mmbuttonframe:SetHeight(mimi.gui.mmbtnheight)
---       mmbuttonframe:SetWidth(mimi.gui.mmbtnwidth)
---       mmbuttonframe:SetLayer(0)
-
-      -- MiniMapButton Border
-      mmbuttonborder = UI.CreateFrame("Texture", "mimi_mmBtnIconBorder", mmbtncontext)
---       mmbuttonborder = UI.CreateFrame("Texture", "mimi_mmBtnIconBorder", mmbuttonframe)
-      mmbuttonborder:SetTexture("Rift", "icon_border.dds")
---       mmbuttonborder:SetTexture("Rift", "loot_gold_coins.dds")
---       mmbuttonborder:SetHeight(mimi.gui.mmbtnheight)
---       mmbuttonborder:SetWidth(mimi.gui.mmbtnwidth)
-      mmbuttonborder:SetLayer(1)
-      mmbuttonborder:EventAttach(Event.UI.Input.Mouse.Left.Click, function() mimi.showhidewindow() end, "Show/Hide Pressed" )
-
-      print(string.format("mimi.gui.mmbtnx=%s mimi.gui.mmbtny=%s", mimi.gui.mmbtnx, mimi.gui.mmbtny))
-      if mimi.gui.mmbtnx == nil or mimi.gui.mmbtny == nil then
-         -- first run, we position in the screen center
-         mmbuttonborder:SetPoint("CENTER", UIParent, "CENTER")
-      else
-         -- we have coordinates
-         mmbuttonborder:SetPoint("TOPLEFT", UIParent, "TOPLEFT", mimi.gui.mmbtnx, mimi.gui.mmbtny)
-      end
+            mmbtncontext = UI.CreateContext("button_context")
 
       -- MiniMapButton Icon
-      mmbutton = UI.CreateFrame("Texture", "mimi_mmBtnIcon", mmbuttonborder)
-      mmbutton:SetTexture("Rift", "Minion_1158.dds")
-      mmbutton:SetLayer(1)
-      mmbutton:SetPoint("TOPLEFT",     mmbuttonborder, "TOPLEFT",      12, 12)
-      mmbutton:SetPoint("BOTTOMRIGHT", mmbuttonborder, "BOTTOMRIGHT", -12, -12)
+      mmbutton = UI.CreateFrame("Texture", "mimi_mmBtnIcon", mmbtncontext)
+      --       mmbutton:SetTexture("Rift", "Minion_I15B.dds")
+      mmbutton:SetTexture("Rift", "Icon_Dominion_sm.png.dds")
+      mmbutton:SetLayer(2)
+      mmbutton:SetHeight(mimi.gui.mmbtnheight)
+      mmbutton:SetWidth(mimi.gui.mmbtnwidth)
+      mmbutton:EventAttach(Event.UI.Input.Mouse.Left.Click, function() mimi.showhidewindow() end, "Show/Hide Pressed" )
 
-      mimi.gui.mmbtnobj   =  mmbuttonborder
+      if mimi.gui.mmbtnx == nil or mimi.gui.mmbtny == nil then
+         -- first run, we position in the screen center
+         mmbutton:SetPoint("CENTER", UIParent, "CENTER")
+      else
+         -- we have coordinates
+         mmbutton:SetPoint("TOPLEFT", UIParent, "TOPLEFT", mimi.gui.mmbtnx, mimi.gui.mmbtny)
+      end
+
+      mimi.gui.mmbtnobj   =  mmbutton
    else
       mmbutton = mimi.gui.mmbtnobj
    end

@@ -51,13 +51,15 @@ function mimi.updateguicoordinates(win, x, y)
 --    print(string.format("mimi.updateguicoordinates win=%s x=%s y=%s", win, x, y))
    if win ~= nil then
       local winname = win:GetName()
-      print("updateguicoordinates WINNAME ("..winname..")")
+--       print("updateguicoordinates WINNAME ("..winname..")")
       if winname  == "MiMi" then
          mimi.gui.winx   = mimi.round(x)
          mimi.gui.winy   =	mimi.round(y)
       end
 
-      if winname == "mimi_mmBtnIconBorder" then
+--       if winname == "mimi_mmBtnIconBorder" then
+--    if winname == "mimi_mmBtnFrame" then
+   if winname == "mimi_mmBtnIcon" then
          mimi.gui.mmbtnx   =  mimi.round(x)
          mimi.gui.mmbtny   =  mimi.round(y)
       end
@@ -69,12 +71,12 @@ end
 
 function mimi.loadvariables(_, addonname)
    if addon.name == addonname then
-      print("mimi.loadvariables ("..addonname..")")
+--       print("mimi.loadvariables ("..addonname..")")
       if gui then
          local key, val = nil, nil
          for key, val in pairs(gui) do
             mimi.gui[key]   =  val
-            print(string.format("key=%s val=%s mimi.gui[key]=%s", key, val, mimi.gui[key]))
+--             print(string.format("key=%s val=%s mimi.gui[key]=%s", key, val, mimi.gui[key]))
          end
 
 
