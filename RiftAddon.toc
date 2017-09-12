@@ -1,7 +1,7 @@
 Identifier  =  "MiMi"
 Name        =  { English = "MiMi" }
 NameShort   =  "CuT"
-Version     =  "0.0.4"
+Version     =  "0.0.6"
 Description =  { English = "Missing Minions" }
 Author      =  "marcob@marcob.org"
 Website     =  "https://github.com/cubeslinger/MiMi"
@@ -11,7 +11,7 @@ Environment =  "4.0"
 RunOnStartup = {
    "_mimi_init.lua",
    "_mimi_minimapbutton.lua",
-   "_mimi_name-obtained.lua",
+   "_mimi_name_obtained.lua",
    "MiMi.lua",
 }
 

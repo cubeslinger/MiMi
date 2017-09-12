@@ -18,6 +18,7 @@ local function createwindow()
    mimiextframe:SetPoint("BOTTOMLEFT",  mimiwin, "BOTTOMLEFT",    mimi.gui.border.left,   -mimi.gui.border.bottom)
    mimiextframe:SetPoint("BOTTOMRIGHT", mimiwin, "BOTTOMRIGHT",   -mimi.gui.border.right,  -mimi.gui.border.bottom)
    mimiextframe:SetLayer(1)
+   mimiextframe:SetBackgroundColor(0, 0, 2, .5)
 
    -- MASK FRAME
    local mimimaskframe = UI.CreateFrame("Mask", "mimi_mask_frame", mimiextframe)
@@ -142,7 +143,7 @@ function mimi.searchformissing()
    local found          =  false
    local missingtbl     =  {}
 
-   for name, tbl in pairs(mimi.db.name_obtained) do
+   for name, tbl in pairs(mimi.db) do
       total = total + 1
       for id, _ in pairs(minions) do
          local detail = Inspect.Minion.Minion.Detail(id) if name == detail.name then found = true break end
