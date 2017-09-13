@@ -24,5 +24,6 @@ Dependencies = {
 }
 
 SavedVariables = {
-   gui   =  'character',
+   gui      =  'character',
+   rarity   =  'character',
 }

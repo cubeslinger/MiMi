@@ -38,6 +38,10 @@ mimi.gui.obtained       =  nil
 mimi.gui.detail         =  nil
 mimi.gui.listeleheight  =  nil
 --
+mimi.db                 =  {}
+mimi.db.minions         =  {}
+mimi.db.rarity          =  {}
+--
 
 function mimi.round(num, digits)
    local floor = math.floor
@@ -94,6 +98,8 @@ function mimi.savevariables(_, addonname)
       a.mmbtny    =  mimi.gui.mmbtny
       a.visible   =  mimi.gui.visible
       gui         =  a
+
+      rarity      =  minion.db.rarity
    end
 
    return

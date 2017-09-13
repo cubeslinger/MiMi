@@ -117,10 +117,10 @@ function mimi.showdetail(minionname)
    mimi.gui.name:SetText(minionname)
    --
    mimi.gui.obtained:SetText("")
-   mimi.gui.obtained:SetText(mimi.db[minionname].obtained)
+   mimi.gui.obtained:SetText(mimi.db.minions[minionname].obtained)
    --
    mimi.gui.detail:SetText("")
-   mimi.gui.detail:SetText(mimi.db[minionname].details)
+   mimi.gui.detail:SetText(mimi.db.minions[minionname].details)
 
    return
 end
@@ -202,14 +202,23 @@ function mimi.searchformissing()
       collected = collected + 1
 
 --       print(string.format("Name is >%s<", name))
-      local myname   =  Inspect.Minion.Minion.Detail(id).name
-      if not mimi.db[myname] then
+      local t        =  Inspect.Minion.Minion.Detail(id)
+--       local myname   =  Inspect.Minion.Minion.Detail(id).name
+--       local rarity   =  Inspect.Minion.Minion.Detail(id).rarity
+      local myname   =  t.name
+      local rarity   =  t.rarity
+      if rarity   then
+         mimi.db.rarity[myname]  =  rarity
+         print(string.format("rarity of %s is %s", myname, rarity))
+      end
+
+      if not mimi.db.minions[myname] then
          outofdbno   =  outofdbno + 1
          table.insert(outofdb, myname)
       end
    end
 
-   for name, tbl in pairs(mimi.db) do
+   for name, tbl in pairs(mimi.db.minions) do
       total = total + 1
       for id, _ in pairs(minions) do
          local detail = Inspect.Minion.Minion.Detail(id)

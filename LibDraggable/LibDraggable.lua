@@ -1,5 +1,9 @@
 --[[ LibDraggable
   Library.LibDraggable.draggify(window)
+
+  Notes: modified for FishItUp! by marcob@marcob.org
+         1) moves frames and not windows anymore.
+         2) reacts on RIGHT mouse clicks and not LEFT.
 ]]--
 
 if not Library then Library = {} end
@@ -14,32 +18,26 @@ Draggable.printf = Library.printf.printf
 Draggable.windows = {}
 
 function Draggable.draggify(window, callback)
-
   local newtab = { dragging = false, x = 0, y = 0 }
   Draggable.windows[window] = newtab
   newtab.callback = callback
-
-  local border =  nil
-  if Utility.Type(window) == "window"  then  border = window:GetBorder()
-                                       else  border = window
-  end
 --   local border = window:GetBorder()
---   local border = window
-  border:EventAttach(Event.UI.Input.Mouse.Right.Down, function(...) Draggable.rightdown(window, ...) end, "draggable_right_down")
+   local border = window
+  border:EventAttach(Event.UI.Input.Mouse.Right.Down, function(...) Draggable.leftdown(window, ...) end, "draggable_left_down")
   border:EventAttach(Event.UI.Input.Mouse.Cursor.Move, function(...) Draggable.mousemove(window, ...) end, "draggable_mouse_move")
-  border:EventAttach(Event.UI.Input.Mouse.Right.Up, function(...) Draggable.rightup(window, ...) end, "draggable_right_up")
-  border:EventAttach(Event.UI.Input.Mouse.Right.Upoutside, function(...) Draggable.rightupoutside(window, ...) end, "draggable_right_upoutside")
+  border:EventAttach(Event.UI.Input.Mouse.Right.Up, function(...) Draggable.leftup(window, ...) end, "draggable_left_up")
+  border:EventAttach(Event.UI.Input.Mouse.Right.Upoutside, function(...) Draggable.leftupoutside(window, ...) end, "draggable_left_upoutside")
   Draggable.windows[window] = newtab
 end
 
-function Draggable.rightdown(window, event, ...)
+function Draggable.leftdown(window, event, ...)
   local win = Draggable.windows[window]
   if not win then
     Draggable.windows[window] = { dragging = false, x = 0, y = 0 }
     win = Draggable.windows[window]
   end
   win.dragging = true
-  win.win_x = window:GetRight()
+  win.win_x = window:GetLeft()
   win.win_y = window:GetTop()
   local l, t, r, b = window:GetBounds()
   window:ClearAll()
@@ -64,7 +62,7 @@ function Draggable.mousemove(window, event, ...)
   end
 end
 
-function Draggable.rightup(window, event, ...)
+function Draggable.leftup(window, event, ...)
   local win = Draggable.windows[window]
   if win then
     win.dragging = false
@@ -73,7 +71,7 @@ function Draggable.rightup(window, event, ...)
   end
 end
 
-function Draggable.rightupoutside(window, event, ...)
+function Draggable.leftupoutside(window, event, ...)
   local win = Draggable.windows[window]
   if win then
     win.dragging = false
