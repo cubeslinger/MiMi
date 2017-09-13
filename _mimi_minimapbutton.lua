@@ -15,9 +15,10 @@ function mimi.showhidewindow(visible)
    if visible then
       mimi.gui.visible   =  true
    else
-      if mimi.gui.visible == true   then  mimi.gui.visible   =  false
-                                    else  mimi.gui.visible   =  true
-      end
+      mimi.gui.visible  =  (not mimi.gui.winobj:GetVisible())
+--       if mimi.gui.visible == true   then  mimi.gui.visible   =  false
+--                                     else  mimi.gui.visible   =  true
+--       end
    end
 
    mimi.gui.winobj:SetVisible(mimi.gui.visible)
