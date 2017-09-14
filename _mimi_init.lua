@@ -12,35 +12,63 @@ mimi.version            =  Inspect.Addon.Detail(Inspect.Addon.Current())["toc"][
 mimi.gui                =  {}
 mimi.gui.font           =  {}
 mimi.gui.font.size      =  12
+--
 mimi.gui.border         =  {}
 mimi.gui.border.left    =  4
 mimi.gui.border.right   =  4
-mimi.gui.border.top     =  38
+mimi.gui.border.top     =  4
 mimi.gui.border.bottom  =  4
+--
 mimi.gui.scroll         =  {}
 mimi.gui.scroll.width   =  14
 mimi.gui.scroll.lastpos =  0
 mimi.gui.visible        =  false
+--
 mimi.gui.mmbtnheight    =  38
 mimi.gui.mmbtnwidth     =  38
 mimi.gui.mmbtnobj       =  nil
+--
 mimi.gui.panelheight    =  300
 mimi.gui.infoheight     =  150
+--
 mimi.gui.winobj         =  nil
 mimi.gui.winx           =  nil
 mimi.gui.winy           =  nil
-mimi.gui.winh           =  500
+mimi.gui.winh           =  490
 mimi.gui.winw           =  350
+--
 mimi.gui.mmbtnx         =  nil
 mimi.gui.mmbtny         =  nil
 mimi.gui.name           =  nil
 mimi.gui.obtained       =  nil
 mimi.gui.detail         =  nil
 mimi.gui.listeleheight  =  nil
+mimi.gui.titleh         =  38
+mimi.gui.collected      =  nil
+mimi.gui.missing        =  nil
 --
 mimi.db                 =  {}
 mimi.db.minions         =  {}
 mimi.db.rarity          =  {}
+--
+mimi.html					=  {}
+mimi.html.colors        =  {}
+mimi.html.colors.silver		=	'#c0c0c0'
+mimi.html.colors.gold      =  '#ffd700'
+mimi.html.colors.platinum  =  '#e5e4e2'
+mimi.html.colors.white     =  '#ffffff'
+mimi.html.colors.red       =  '#ff0000'
+mimi.html.colors.green     =  '#00ff00'
+mimi.html.colors.black     =  '#000000'
+mimi.html.colors.grey1     =  '#323232'   -- '#010101'
+mimi.html.colors.grey2     =  '#636363'   -- '#020202'
+--
+mimi.html.title 				=	"<font color=\'"..mimi.html.colors.white.."\'>Mi</font>"..
+                              "<font color=\'"..mimi.html.colors.grey2.."\'>ss</font>"..
+                              "<font color=\'"..mimi.html.colors.grey1.."\'>ing</font> "..
+                              "<font color=\'"..mimi.html.colors.white.."\'>Mi</font>"..
+                              "<font color=\'"..mimi.html.colors.grey2.."\'>ni</font>"..
+                              "<font color=\'"..mimi.html.colors.grey1.."\'>ons</font> "
 --
 
 function mimi.round(num, digits)

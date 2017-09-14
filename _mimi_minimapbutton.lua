@@ -8,11 +8,14 @@ local addon, mimi = ...
 
 function mimi.showhidewindow(visible)
 
+   local missing =  0
+   local collected =  0
+   local outofdbno =  0
+
    if not mimi.gui.winobj then
 
---       mimi.job_search()
-      mimi.searchformissing()
---       corout(mimi.searchformissing, "Corout mimi.searchformissing")
+      missing, collected, outofdbno   =  mimi.searchformissing()
+      print(string.format("MiMi Collected: %s, Missing: %s OutofDb: %s", collected, missing, outofdbno))
       visible  =  true
    end
 
@@ -20,12 +23,12 @@ function mimi.showhidewindow(visible)
       mimi.gui.visible   =  true
    else
       mimi.gui.visible  =  (not mimi.gui.winobj:GetVisible())
---       if mimi.gui.visible == true   then  mimi.gui.visible   =  false
---                                     else  mimi.gui.visible   =  true
---       end
    end
 
    mimi.gui.winobj:SetVisible(mimi.gui.visible)
+
+   if mimi.gui.missing     then  mimi.gui.missing:SetText(tostring(missing))     end
+   if mimi.gui.collected   then  mimi.gui.collected:SetText(tostring(collected)) end
 
    return
 end

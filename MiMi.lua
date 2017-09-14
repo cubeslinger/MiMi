@@ -22,6 +22,7 @@ local function createwindow()
       mimiwin:SetPoint("TOPLEFT", UIParent, "TOPLEFT", mimi.gui.winx, mimi.gui.winy)
    end
 
+
    -- EXTERNAL CUT CONTAINER FRAME
    local mimiextframe =  UI.CreateFrame("Frame", "mimi_external_frame", mimiwin)
    mimiextframe:SetPoint("TOPLEFT",     mimiwin, "TOPLEFT",       mimi.gui.border.left,   mimi.gui.border.top)
@@ -31,89 +32,138 @@ local function createwindow()
    mimiextframe:SetLayer(1)
    mimiextframe:SetBackgroundColor(.1, .1, .1, .5)
 
-   -- MASK FRAME
-   local mimimaskframe = UI.CreateFrame("Mask", "mimi_mask_frame", mimiextframe)
-   mimimaskframe:SetPoint("TOPLEFT",     mimiextframe, "TOPLEFT")
-   mimimaskframe:SetPoint("TOPRIGHT",    mimiextframe, "TOPRIGHT",   -(mimi.gui.border.right + mimi.gui.scroll.width),  0)
-   mimimaskframe:SetPoint("BOTTOMLEFT",  mimiextframe, "TOPLEFT",    0, mimi.gui.panelheight)
-   mimimaskframe:SetPoint("BOTTOMRIGHT", mimiextframe, "TOPRIGHT",   -(mimi.gui.border.right + mimi.gui.scroll.width), mimi.gui.panelheight)
-   mimimaskframe:SetLayer(2)
+   -- Title Frame
+      local mimititleframe =  UI.CreateFrame("Frame", "mimi_title_frame", mimiextframe)
+      mimititleframe:SetHeight(mimi.gui.font.size)
+      mimititleframe:SetPoint("TOPLEFT",  mimiextframe, "TOPLEFT",   mimi.gui.border.left, 0)
+      mimititleframe:SetPoint("TOPRIGHT", mimiextframe, "TOPRIGHT",  -mimi.gui.border.right, 0)
 
-   -- CONTAINER FRAME
-   local mimiframe =  UI.CreateFrame("Frame", "mimi_frame", mimimaskframe)
-   mimiframe:SetAllPoints(mimimaskframe)
-   mimiframe:SetBackgroundColor(.3, .3, .3, .7)
-   mimiframe:SetLayer(2)
+         local mimititle  =  UI.CreateFrame("Text", "mimi_title", mimititleframe)
+         mimititle:SetFontSize(mimi.gui.font.size)
+         mimititle:SetHeight(mimi.gui.font.size)
+         mimititle:SetText(mimi.html.title, true)
+         mimititle:SetLayer(2)
+         mimititle:SetBackgroundColor(.1, .1, .1, .5)
+         mimititle:SetPoint("TOPLEFT",     mimititleframe, "TOPLEFT")
 
-   -- MASK FRAME
-   local mimimaskinfo = UI.CreateFrame("Mask", "mimi_mask_info", mimiextframe)
-   mimimaskinfo:SetPoint("TOPLEFT",     mimiextframe, "BOTTOMLEFT",  mimi.gui.border.left, -(mimi.gui.infoheight + mimi.gui.border.bottom))
-   mimimaskinfo:SetPoint("TOPRIGHT",    mimiextframe, "BOTTOMRIGHT", -(mimi.gui.border.right + mimi.gui.scroll.width), -(mimi.gui.infoheight + mimi.gui.border.bottom))
-   mimimaskinfo:SetPoint("BOTTOMLEFT",  mimiextframe, "BOTTOMLEFT")
-   mimimaskinfo:SetPoint("BOTTOMRIGHT", mimiextframe, "BOTTOMRIGHT")
-   mimimaskinfo:SetLayer(2)
+      -- MASK FRAME
+      local mimimaskframe = UI.CreateFrame("Mask", "mimi_mask_frame", mimiextframe)
+      mimimaskframe:SetPoint("TOPLEFT",     mimititleframe, "BOTTOMLEFT",  0, mimi.gui.border.top*2)
+      mimimaskframe:SetPoint("TOPRIGHT",    mimititleframe, "BOTTOMRIGHT", -(mimi.gui.border.right + mimi.gui.scroll.width),  mimi.gui.border.top*2)
+      mimimaskframe:SetPoint("BOTTOMLEFT",  mimiextframe, "TOPLEFT",    0, mimi.gui.panelheight)
+      mimimaskframe:SetPoint("BOTTOMRIGHT", mimiextframe, "TOPRIGHT",   -(mimi.gui.border.right + mimi.gui.scroll.width), mimi.gui.panelheight)
+      mimimaskframe:SetLayer(2)
 
-   -- INFO FRAME
-   local mimiinfoframe =  UI.CreateFrame("Frame", "mimi_info_frame", mimimaskinfo)
-   mimiinfoframe:SetAllPoints(mimimaskinfo)
---    mimiinfoframe:SetBackgroundColor(0, 2, 0, .5)
-   mimiinfoframe:SetBackgroundColor(.3, .3, .3, .7)
-   mimiinfoframe:SetLayer(2)
+      -- CONTAINER FRAME
+      local mimiframe =  UI.CreateFrame("Frame", "mimi_frame", mimimaskframe)
+      mimiframe:SetAllPoints(mimimaskframe)
+      mimiframe:SetBackgroundColor(.1, .1, .1, .5)
+      mimiframe:SetLayer(2)
 
-      local miminame  =  UI.CreateFrame("Text", "mimi_name", mimiinfoframe)
-      miminame:SetFontSize(mimi.gui.font.size * 2)
-      miminame:SetFontColor(1, 1, 0, .4)
-      miminame:SetBackgroundColor(.3, .3, .3, .7)
-      miminame:SetLayer(3)
-      miminame:SetPoint("TOPLEFT", mimiinfoframe, "TOPLEFT",   mimi.gui.border.left, 0)
-      miminame:SetPoint("TOPRIGHT", mimiinfoframe, "TOPRIGHT", -mimi.gui.border.right, 0)
-      mimi.gui.name  =  miminame
+      -- MASK FRAME
+      local mimimaskinfo = UI.CreateFrame("Mask", "mimi_mask_info", mimiextframe)
+      mimimaskinfo:SetPoint("TOPLEFT",     mimimaskframe, "BOTTOMLEFT",  0, mimi.gui.border.top)
+      mimimaskinfo:SetPoint("TOPRIGHT",    mimimaskframe, "BOTTOMRIGHT", mimi.gui.border.right+mimi.gui.scroll.width, mimi.gui.border.top)
+      mimimaskinfo:SetPoint("BOTTOMLEFT",  mimimaskframe, "BOTTOMLEFT",  0, (mimi.gui.border.top + mimi.gui.infoheight))
+      mimimaskinfo:SetPoint("BOTTOMRIGHT", mimimaskframe, "BOTTOMRIGHT", mimi.gui.border.right+mimi.gui.scroll.width, (mimi.gui.border.top + mimi.gui.infoheight))
+      mimimaskinfo:SetLayer(2)
 
-      local mimiobtained  =  UI.CreateFrame("Text", "mimi_obtained", mimiinfoframe)
-      mimiobtained:SetFontSize(mimi.gui.font.size)
-      mimiobtained:SetBackgroundColor(.3, .3, .3, .7)
-      mimiobtained:SetLayer(3)
---       mimiobtained:SetPoint("TOPRIGHT", mimiinfoframe, "TOPRIGHT",  -mimi.gui.border.right, 0)
-      mimiobtained:SetPoint("TOPLEFT", miminame, "TOPLEFT",  0, mimi.gui.border.top)
-      mimi.gui.obtained =  mimiobtained
+      -- INFO FRAME
+      local mimiinfoframe =  UI.CreateFrame("Frame", "mimi_info_frame", mimimaskinfo)
+      mimiinfoframe:SetAllPoints(mimimaskinfo)
+      mimiinfoframe:SetBackgroundColor(.1, .1, .1, .5)
+      mimiinfoframe:SetLayer(2)
 
-      -- Detail Field
-      local mimidetail  =  UI.CreateFrame("Text", "mimi_detail", mimiinfoframe)
-      mimidetail:SetFontSize(mimi.gui.font.size)
-      mimidetail:SetBackgroundColor(.3, .3, .3, .7)
-      mimidetail:SetBackgroundColor(.0, .0, .0, .4)
-      mimidetail:SetLayer(3)
---       mimidetail:SetPoint("TOPLEFT",   miminame,      "BOTTOMLEFT")
-      mimidetail:SetPoint("TOPLEFT",  mimiobtained,  "TOPLEFT", 0, mimi.gui.border.top)
---       mimidetail:SetPoint("TOPLEFT",   miminame,      "BOTTOMLEFT")
-      mimidetail:SetPoint("BOTTOMRIGHT",  mimiinfoframe,  "BOTTOMRIGHT", -mimi.gui.border.bottom, 0)
-      mimidetail:SetWordwrap(true)
-      mimi.gui.detail   =  mimidetail
+         local miminame  =  UI.CreateFrame("Text", "mimi_name", mimiinfoframe)
+         miminame:SetFontSize(mimi.gui.font.size * 2)
+         miminame:SetFontColor(1, 1, 0, .4)
+         miminame:SetBackgroundColor(.1, .1, .1, .5)
+         miminame:SetLayer(3)
+         miminame:SetPoint("TOPLEFT",  mimiinfoframe, "TOPLEFT",   mimi.gui.border.left,  0)
+         miminame:SetPoint("TOPRIGHT", mimiinfoframe, "TOPRIGHT", -mimi.gui.border.right, 0)
+         mimi.gui.name  =  miminame
 
-   -- ITEMS SCROLLBAR
-   mimiscroll = UI.CreateFrame("RiftScrollbar","mimi_scrollbar", mimiextframe)
-   mimiscroll:SetVisible(true)
-   mimiscroll:SetEnabled(true)
-   mimiscroll:SetOrientation("vertical")
-   mimiscroll:SetLayer(2)
-   mimiscroll:SetPoint("TOPRIGHT",     mimiextframe,  "TOPRIGHT")
-   mimiscroll:SetPoint("BOTTOMRIGHT",  mimiextframe,  "TOPRIGHT", 0, mimi.gui.panelheight)
-   mimiscroll:EventAttach(   Event.UI.Scrollbar.Change,
-                           function()
-                              local pos = mimi.round(mimiscroll:GetPosition())
-                              if pos ~= mimi.gui.scroll.lastpos then
-                                 if pos == 1 then
-                                    mimiframe:SetAllPoints(mimimaskframe)
-                                 else
-                                    mimi.gui.scroll.lastpos =  pos
---                                     print("pos ("..pos..")")
-                                    local newy  =  -math.floor(mimi.gui.listeleheight * pos)
-                                    mimiframe:SetPoint("TOPLEFT", mimimaskframe, "TOPLEFT", 0, newy )
+         local mimiobtained  =  UI.CreateFrame("Text", "mimi_obtained", mimiinfoframe)
+         mimiobtained:SetFontSize(mimi.gui.font.size)
+         mimiobtained:SetBackgroundColor(.1, .1, .1, .5)
+         mimiobtained:SetLayer(3)
+         mimiobtained:SetPoint("TOPLEFT",    miminame,   "BOTTOMLEFT",  0, mimi.gui.border.top)
+         mimiobtained:SetPoint("TOPRIGHT",   miminame,   "BOTTOMRIGHT", 0, mimi.gui.border.top)
+         mimi.gui.obtained =  mimiobtained
+
+         -- Detail Field
+         local mimidetail  =  UI.CreateFrame("Text", "mimi_detail", mimiinfoframe)
+         mimidetail:SetFontSize(mimi.gui.font.size)
+         mimidetail:SetBackgroundColor(.1, .1, .1, .5)
+         mimidetail:SetLayer(3)
+         mimidetail:SetPoint("TOPLEFT",  mimiobtained,  "BOTTOMLEFT", 0, mimi.gui.border.top)
+         mimidetail:SetPoint("BOTTOMRIGHT",  mimiinfoframe,  "BOTTOMRIGHT", 0, -mimi.gui.border.bottom)
+         mimidetail:SetWordwrap(true)
+         mimi.gui.detail   =  mimidetail
+
+      -- ITEMS SCROLLBAR
+      mimiscroll = UI.CreateFrame("RiftScrollbar","mimi_scrollbar", mimiextframe)
+      mimiscroll:SetVisible(true)
+      mimiscroll:SetEnabled(true)
+      mimiscroll:SetOrientation("vertical")
+      mimiscroll:SetLayer(2)
+      mimiscroll:SetPoint("TOPRIGHT",     mimititleframe,   "BOTTOMRIGHT", 0, mimi.gui.border.top)
+      mimiscroll:SetPoint("BOTTOMRIGHT",  mimiextframe,     "TOPRIGHT",    0, mimi.gui.panelheight)
+      mimiscroll:EventAttach(   Event.UI.Scrollbar.Change,
+                              function()
+                                 local pos = mimi.round(mimiscroll:GetPosition())
+                                 if pos ~= mimi.gui.scroll.lastpos then
+                                    if pos == 1 then
+                                       mimiframe:SetAllPoints(mimimaskframe)
+                                    else
+                                       mimi.gui.scroll.lastpos =  pos
+                                       local newy  =  -math.floor(mimi.gui.listeleheight * pos)
+                                       mimiframe:SetPoint("TOPLEFT", mimimaskframe, "TOPLEFT", 0, newy )
+                                    end
                                  end
-                              end
-                           end,
-                           "TotalsFrame_Scrollbar.Change"
-                        )
+                              end,
+                              "TotalsFrame_Scrollbar.Change"
+                           )
+
+      -- Status Frame
+      local mimistatusframe =  UI.CreateFrame("Frame", "mimi_status_frame", mimiextframe)
+      mimistatusframe:SetPoint("TOPLEFT",     mimiinfoframe, "BOTTOMLEFT",  0,   mimi.gui.border.top)
+      mimistatusframe:SetPoint("TOPRIGHT",    mimiinfoframe, "BOTTOMRIGHT", 0,   mimi.gui.border.top)
+      mimistatusframe:SetPoint("BOTTOMLEFT",  mimiextframe,  "BOTTOMLEFT",  mimi.gui.border.left, -mimi.gui.border.bottom)
+      mimistatusframe:SetPoint("BOTTOMRIGHT", mimiinfoframe, "BOTTOMRIGHT", -mimi.gui.border.right, -mimi.gui.border.bottom)
+      mimistatusframe:SetLayer(1)
+      mimistatusframe:SetBackgroundColor(.1, .1, .1, .5)
+
+         local mimistatusmissinglabel =  UI.CreateFrame("Text", "mimi_status_missing_label", mimistatusframe)
+         mimistatusmissinglabel:SetText("Missing: ")
+         mimistatusmissinglabel:SetFontColor(1, 1, 0, .4)
+         mimistatusmissinglabel:SetPoint("TOPLEFT",     mimistatusframe, "TOPLEFT")
+         mimistatusmissinglabel:SetLayer(2)
+         mimistatusmissinglabel:SetBackgroundColor(.1, .1, .1, .5)
+
+         local mimistatusmissing  =  UI.CreateFrame("Text", "mimi_status_missing_counter", mimistatusframe)
+         mimistatusmissing:SetPoint("TOPLEFT",     mimistatusmissinglabel, "TOPRIGHT")
+         mimistatusmissing:SetFontColor(1, 1, 0, .4)
+         mimistatusmissing:SetText("0")
+         mimistatusmissing:SetLayer(2)
+         mimistatusmissing:SetBackgroundColor(.1, .1, .1, .5)
+         mimi.gui.missing        =  mimistatusmissing
+
+         local mimistatuscollected   =  UI.CreateFrame("Text", "mimi_status_collected_counter", mimistatusframe)
+         mimistatuscollected:SetPoint("TOPRIGHT",     mimistatusframe, "TOPRIGHT")
+         mimistatuscollected:SetFontColor(1, 1, 0, .4)
+         mimistatuscollected:SetText("0")
+         mimistatuscollected:SetLayer(2)
+         mimistatuscollected:SetBackgroundColor(.1, .1, .1, .5)
+         mimi.gui.collected         =  mimistatuscollected
+
+         local mimistatuscollectedlabel =  UI.CreateFrame("Text", "mimi_status_collected_label", mimistatusframe)
+         mimistatuscollectedlabel:SetText("Collected: ")
+         mimistatuscollectedlabel:SetFontColor(1, 1, 0, .4)
+         mimistatuscollectedlabel:SetPoint("TOPRIGHT",     mimistatuscollected, "TOPLEFT", -mimi.gui.border.right, 0)
+         mimistatuscollectedlabel:SetLayer(2)
+         mimistatuscollectedlabel:SetBackgroundColor(.1, .1, .1, .5)
+
    -- Enable Dragging
    Library.LibDraggable.draggify(mimiwin, mimi.updateguicoordinates)
 
@@ -254,7 +304,7 @@ function mimi.searchformissing()
    -- sort missingtbl by Alphabetic Order
    local s     =  {}
    local a, b  =  nil, nil
-   for a, b in pairs(missingtbl) do table.insert(s, a) print("("..a..")") end
+   for a, b in pairs(missingtbl) do table.insert(s, a) end
    table.sort(s)
 
    populatemissinglist(missingtbl, s, mimiframe)
@@ -264,10 +314,14 @@ function mimi.searchformissing()
    local scrollsteps =  (missing - perframe) + 1
    mimi.gui.scroll:SetRange(1, scrollsteps)
 
-   print(string.format("MiMi Total: %s, Collected: %s, Missing: %s OutofDb: %s", total, collected, missing, outofdbno))
+--    print(string.format("MiMi Total: %s, Collected: %s, Missing: %s OutofDb: %s", total, collected, missing, outofdbno))
+--
+--    mimi.gui.missing:SetText(missing)
+--    mimi.gui.collected:SetText(collected)
+
    if (#outofdb > 0) then for _, myname in pairs(outofdb) do print(string.format("  outofdb: %s", myname)) end end
 
-   return
+   return missing, collected, outofdbno
 end
 
 Command.Event.Attach(Event.Addon.SavedVariables.Load.End,   mimi.loadvariables,   "MiMi: Load Variables")
