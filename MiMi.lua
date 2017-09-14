@@ -170,17 +170,16 @@ local function createline(number, minionname, miniontbl, mimiframe)
 end
 
 
-local function populatemissinglist(missingtbl, mimiframe)
+local function populatemissinglist(missingtbl, sorttable, mimiframe)
 
    local lastline =  nil
    local cnt      =  0
-   for name, tbl in pairs(missingtbl) do
+   for _, name in pairs(sorttable) do
       cnt = cnt + 1
---       print(string.format("name=%s tbl=%s", name, tbl))
-      local line = createline(cnt, name, tbl, mimiframe)
+--       print(string.format("name=%s tbl=%s", name, missingtbl[name]))
+      local line = createline(cnt, name, missingtbl[name], mimiframe)
       if not mimi.gui.listeleheight  then
          mimi.gui.listeleheight  =  line:GetHeight()
---          print("mimi.gui.listeleheight("..mimi.gui.listeleheight..")")
       end
 
       if lastline then
@@ -218,7 +217,7 @@ function mimi.searchformissing()
       local rarity   =  t.rarity
       if rarity   then
          mimi.db.rarity[myname]  =  rarity
-         print(string.format("rarity of %s is %s", myname, rarity))
+--          print(string.format("rarity of %s is %s", myname, rarity))
       end
 
       if not mimi.db.minions[myname] then
@@ -230,10 +229,12 @@ function mimi.searchformissing()
    for name, tbl in pairs(mimi.db.minions) do
       total = total + 1
       for id, _ in pairs(minions) do
-         local detail = Inspect.Minion.Minion.Detail(id)
-         if name == detail.name then
-            found = true
-            break
+         if (id) then
+            local detail = Inspect.Minion.Minion.Detail(id)
+            if name == detail.name then
+               found = true
+               break
+            end
          end
       end
 
@@ -250,7 +251,13 @@ function mimi.searchformissing()
    mimi.gui.info     =  mimiinfoframe
    mimi.gui.scroll   =  mimiscroll
 
-   populatemissinglist(missingtbl, mimiframe)
+   -- sort missingtbl by Alphabetic Order
+   local s     =  {}
+   local a, b  =  nil, nil
+   for a, b in pairs(missingtbl) do table.insert(s, a) print("("..a..")") end
+   table.sort(s)
+
+   populatemissinglist(missingtbl, s, mimiframe)
 
    local h           =  mimiframe:GetHeight()
    local perframe    =  mimi.round(h / mimi.gui.listeleheight)

@@ -9,7 +9,10 @@ local addon, mimi = ...
 function mimi.showhidewindow(visible)
 
    if not mimi.gui.winobj then
+
+--       mimi.job_search()
       mimi.searchformissing()
+--       corout(mimi.searchformissing, "Corout mimi.searchformissing")
       visible  =  true
    end
 
