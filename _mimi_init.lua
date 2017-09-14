@@ -61,8 +61,6 @@ function mimi.updateguicoordinates(win, x, y)
          mimi.gui.winy   =	mimi.round(y)
       end
 
---       if winname == "mimi_mmBtnIconBorder" then
---    if winname == "mimi_mmBtnFrame" then
    if winname == "mimi_mmBtnIcon" then
          mimi.gui.mmbtnx   =  mimi.round(x)
          mimi.gui.mmbtny   =  mimi.round(y)
@@ -99,7 +97,7 @@ function mimi.savevariables(_, addonname)
       a.visible   =  mimi.gui.visible
       gui         =  a
 
-      rarity      =  minion.db.rarity
+      rarity      =  mimi.db.rarity
    end
 
    return

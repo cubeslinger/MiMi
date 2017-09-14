@@ -214,8 +214,6 @@ function mimi.searchformissing()
 
 --       print(string.format("Name is >%s<", name))
       local t        =  Inspect.Minion.Minion.Detail(id)
---       local myname   =  Inspect.Minion.Minion.Detail(id).name
---       local rarity   =  Inspect.Minion.Minion.Detail(id).rarity
       local myname   =  t.name
       local rarity   =  t.rarity
       if rarity   then

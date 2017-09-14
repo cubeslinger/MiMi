@@ -10,6 +10,7 @@ function mimi.showhidewindow(visible)
 
    if not mimi.gui.winobj then
       mimi.searchformissing()
+      visible  =  true
    end
 
    if visible then
