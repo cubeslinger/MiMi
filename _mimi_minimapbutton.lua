@@ -8,14 +8,20 @@ local addon, mimi = ...
 
 function mimi.showhidewindow(visible)
 
-   local missing =  0
-   local collected =  0
-   local outofdbno =  0
+   local missing     =  0
+   local collected   =  0
+   local outofdbno   =  0
 
    if not mimi.gui.winobj then
 
-      missing, collected, outofdbno   =  mimi.searchformissing()
+      missing, collected, outofdbno, outofdb   =  mimi.searchformissing()
       print(string.format("MiMi Collected: %s, Missing: %s OutofDb: %s", collected, missing, outofdbno))
+      if outofdbno > 0 then
+         local a, b = nil, nil
+         for a,b in ipairs(outofdb) do
+            print(string.format("MiMi Out Of DB: %s: %s", a, b))
+         end
+      end
       visible  =  true
    end
 

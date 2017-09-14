@@ -70,6 +70,20 @@ mimi.html.title 				=	"<font color=\'"..mimi.html.colors.white.."\'>Mi</font>"..
                               "<font color=\'"..mimi.html.colors.grey2.."\'>ni</font>"..
                               "<font color=\'"..mimi.html.colors.grey1.."\'>ons</font> "
 --
+mimi.icons                    =  {}
+mimi.icons["earth"]           =  "Minion_I141.dds"
+mimi.icons["wind"]            =  "Minion_I143.dds"
+mimi.icons["fire"]            =  "Minion_I145.dds"
+mimi.icons["water"]           =  "Minion_I147.dds"
+mimi.icons["life"]            =  "Minion_I149.dds"
+mimi.icons["death"]           =  "Minion_I14B.dds"
+mimi.icons["hunting"]         =  "Minion_I14D.dds"
+mimi.icons["diplomacy"]       =  "Minion_I14F.dds"
+mimi.icons["harvesting"]      =  "Minion_I151.dds"
+mimi.icons["dimesnion"]       =  "Minion_I153.dds"
+mimi.icons["artifact"]        =  "Minion_I155.dds"
+mimi.icons["assassination"]   =  "Minion_I157.dds"
+--
 
 function mimi.round(num, digits)
    local floor = math.floor

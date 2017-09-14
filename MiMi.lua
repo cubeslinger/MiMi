@@ -321,7 +321,7 @@ function mimi.searchformissing()
 
    if (#outofdb > 0) then for _, myname in pairs(outofdb) do print(string.format("  outofdb: %s", myname)) end end
 
-   return missing, collected, outofdbno
+   return missing, collected, outofdbno, outofdb
 end
 
 Command.Event.Attach(Event.Addon.SavedVariables.Load.End,   mimi.loadvariables,   "MiMi: Load Variables")
