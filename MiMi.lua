@@ -264,7 +264,10 @@ function mimi.searchformissing()
 --       print(string.format("Name is >%s<", name))
       local t        =  Inspect.Minion.Minion.Detail(id)
       local myname   =  t.name
-      local rarity   =  t.rarity
+      local rarity   =  t.rarity      
+      
+      mimi.db.id[myname]   =  id
+      
       if rarity   then
          mimi.db.rarity[myname]  =  rarity
 --          print(string.format("rarity of %s is %s", myname, rarity))

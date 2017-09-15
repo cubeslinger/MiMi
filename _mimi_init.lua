@@ -50,6 +50,7 @@ mimi.gui.missing        =  nil
 mimi.db                 =  {}
 mimi.db.minions         =  {}
 mimi.db.rarity          =  {}
+mimi.db.id              =  {}
 --
 mimi.html					=  {}
 mimi.html.colors        =  {}
@@ -140,6 +141,8 @@ function mimi.savevariables(_, addonname)
       gui         =  a
 
       rarity      =  mimi.db.rarity
+      
+      ids         =  mimi.db.id
    end
 
    return

@@ -1,7 +1,7 @@
 Identifier  =  "MiMi"
 Name        =  { English = "MiMi" }
 NameShort   =  "MiMi"
-Version     =  "0.0.14"
+Version     =  "0.0.15"
 Description =  { English = "Missing Minions" }
 Author      =  "marcob@marcob.org"
 Website     =  "https://github.com/cubeslinger/MiMi"
@@ -26,4 +26,5 @@ Dependencies = {
 SavedVariables = {
    gui      =  'character',
    rarity   =  'character',
+   ids      =  'character',
 }
