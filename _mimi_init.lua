@@ -85,7 +85,12 @@ mimi.icons["dimesnion"]       =  "Minion_I153.dds"
 mimi.icons["artifact"]        =  "Minion_I155.dds"
 mimi.icons["assassination"]   =  "Minion_I157.dds"
 --
-
+mimi.vars                     =  {}
+mimi.vars.collected           =  0
+mimi.vars.missing             =  0
+mimi.vars.outofdbno           =  0
+--
+      
 function mimi.round(num, digits)
    local floor = math.floor
    local mult = 10^(digits or 0)

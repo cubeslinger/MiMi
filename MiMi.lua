@@ -45,6 +45,19 @@ local function createwindow()
          mimititle:SetLayer(2)
          mimititle:SetBackgroundColor(.1, .1, .1, .5)
          mimititle:SetPoint("TOPLEFT",     mimititleframe, "TOPLEFT")
+         
+         
+         -- HEADER ICONIZE BUTTON
+         local mimiiconizeButton = UI.CreateFrame("Texture", "mimi_iconize button", mimititleframe)
+         mimiiconizeButton:SetTexture("Rift", "splitbtn_arrow_D_(normal).png.dds")
+         mimiiconizeButton:SetHeight(mimi.gui.font.size)
+         mimiiconizeButton:SetWidth(mimi.gui.font.size)
+         mimiiconizeButton:SetLayer(2)
+         mimiiconizeButton:EventAttach( Event.UI.Input.Mouse.Left.Click, function() mimi.gui.winobj:SetVisible(false) mimi.gui.visible = false end, "MiMi Iconize Button Pressed" )
+         mimiiconizeButton:SetPoint("TOPRIGHT", mimititleframe, "TOPRIGHT", -mimi.gui.border.right, 1)
+--          cD.attachTT(iconizeButton, "minimize")
+         
+         
 
       -- MASK FRAME
       local mimimaskframe = UI.CreateFrame("Mask", "mimi_mask_frame", mimiextframe)
@@ -266,12 +279,10 @@ function mimi.searchformissing()
       local myname   =  t.name
       local rarity   =  t.rarity      
       
-      mimi.db.id[myname]   =  id
-      
-      if rarity   then
-         mimi.db.rarity[myname]  =  rarity
---          print(string.format("rarity of %s is %s", myname, rarity))
-      end
+      -- DEBUG DUMPING - begin
+      mimi.db.id[myname]   =  id     
+      if rarity   then  mimi.db.rarity[myname]  =  rarity   end
+      -- DEBUG DUMPING - end
 
       if not mimi.db.minions[myname] then
          outofdbno   =  outofdbno + 1
