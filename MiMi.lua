@@ -37,6 +37,15 @@ local function createwindow()
       mimititleframe:SetHeight(mimi.gui.font.size)
       mimititleframe:SetPoint("TOPLEFT",  mimiextframe, "TOPLEFT",   mimi.gui.border.left, 0)
       mimititleframe:SetPoint("TOPRIGHT", mimiextframe, "TOPRIGHT",  -mimi.gui.border.right, 0)
+      
+         -- MiniMapButton Icon
+         local mimitileicon = UI.CreateFrame("Texture", "mimi_title_icon", mimiextframe)
+         mimitileicon:SetTexture("Rift", "Icon_Dominion_sm.png.dds")
+         mimitileicon:SetLayer(2)
+         mimitileicon:SetHeight(mimi.gui.font.size*2)
+         mimitileicon:SetWidth(mimi.gui.font.size*2)
+         mimitileicon:SetPoint("TOPLEFT",     mimititleframe, "TOPLEFT", 0, -4)
+      
 
          local mimititle  =  UI.CreateFrame("Text", "mimi_title", mimititleframe)
          mimititle:SetFontSize(mimi.gui.font.size)
@@ -44,7 +53,8 @@ local function createwindow()
          mimititle:SetText(mimi.html.title, true)
          mimititle:SetLayer(2)
          mimititle:SetBackgroundColor(.1, .1, .1, .5)
-         mimititle:SetPoint("TOPLEFT",     mimititleframe, "TOPLEFT")
+--          mimititle:SetPoint("TOPLEFT",     mimititleframe, "TOPLEFT")
+         mimititle:SetPoint("TOPLEFT",     mimitileicon, "TOPRIGHT", mimi.gui.border.left, 2)
          
          
          -- HEADER ICONIZE BUTTON
