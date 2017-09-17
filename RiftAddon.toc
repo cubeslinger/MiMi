@@ -1,7 +1,7 @@
 Identifier  =  "MiMi"
 Name        =  { English = "MiMi" }
 NameShort   =  "MiMi"
-Version     =  "0.0.17"
+Version     =  "0.0.18"
 Description =  { English = "Missing Minions" }
 Author      =  "marcob@marcob.org"
 Website     =  "https://github.com/cubeslinger/MiMi"

@@ -35,7 +35,7 @@ mimi.gui.winobj         =  nil
 mimi.gui.winx           =  nil
 mimi.gui.winy           =  nil
 mimi.gui.winh           =  490
-mimi.gui.winw           =  350
+mimi.gui.winw           =  400 -- 350
 --
 mimi.gui.mmbtnx         =  nil
 mimi.gui.mmbtny         =  nil
@@ -51,6 +51,20 @@ mimi.db                 =  {}
 mimi.db.minions         =  {}
 mimi.db.rarity          =  {}
 mimi.db.id              =  {}
+mimi.db.icons                 =  {}
+mimi.db.icons["earth"]        =  "Minion_I141.dds"
+mimi.db.icons["wind"]         =  "Minion_I143.dds"
+mimi.db.icons["fire"]         =  "Minion_I145.dds"
+mimi.db.icons["water"]        =  "Minion_I147.dds"
+mimi.db.icons["life"]         =  "Minion_I149.dds"
+mimi.db.icons["death"]        =  "Minion_I14B.dds"
+mimi.db.icons["hunting"]      =  "Minion_I14D.dds"
+mimi.db.icons["diplomacy"]    =  "Minion_I14F.dds"
+mimi.db.icons["harvesting"]   =  "Minion_I151.dds"
+mimi.db.icons["dimension"]    =  "Minion_I153.dds"
+mimi.db.icons["artifact"]     =  "Minion_I155.dds"
+mimi.db.icons["assasination"] =  "Minion_I157.dds"
+
 --
 mimi.html					=  {}
 mimi.html.colors        =  {}
@@ -63,7 +77,6 @@ mimi.html.colors.green     =  '#00ff00'
 mimi.html.colors.black     =  '#000000'
 mimi.html.colors.grey1     =  '#323232'   -- '#010101'
 mimi.html.colors.grey2     =  '#636363'   -- '#020202'
---
 mimi.html.title 				=	"<font color=\'"..mimi.html.colors.white.."\'>Mi</font>"..
                               "<font color=\'"..mimi.html.colors.grey2.."\'>ss</font>"..
                               "<font color=\'"..mimi.html.colors.grey1.."\'>ing</font> "..
@@ -71,19 +84,6 @@ mimi.html.title 				=	"<font color=\'"..mimi.html.colors.white.."\'>Mi</font>"..
                               "<font color=\'"..mimi.html.colors.grey2.."\'>ni</font>"..
                               "<font color=\'"..mimi.html.colors.grey1.."\'>ons</font> "
 --
-mimi.icons                    =  {}
-mimi.icons["earth"]           =  "Minion_I141.dds"
-mimi.icons["wind"]            =  "Minion_I143.dds"
-mimi.icons["fire"]            =  "Minion_I145.dds"
-mimi.icons["water"]           =  "Minion_I147.dds"
-mimi.icons["life"]            =  "Minion_I149.dds"
-mimi.icons["death"]           =  "Minion_I14B.dds"
-mimi.icons["hunting"]         =  "Minion_I14D.dds"
-mimi.icons["diplomacy"]       =  "Minion_I14F.dds"
-mimi.icons["harvesting"]      =  "Minion_I151.dds"
-mimi.icons["dimesnion"]       =  "Minion_I153.dds"
-mimi.icons["artifact"]        =  "Minion_I155.dds"
-mimi.icons["assassination"]   =  "Minion_I157.dds"
 --
 mimi.vars                     =  {}
 mimi.vars.collected           =  0
