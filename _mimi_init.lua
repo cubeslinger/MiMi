@@ -12,6 +12,7 @@ mimi.version            =  Inspect.Addon.Detail(Inspect.Addon.Current())["toc"][
 mimi.gui                =  {}
 mimi.gui.font           =  {}
 mimi.gui.font.size      =  12
+mimi.gui.font.face      =  "fonts/MonospaceTypewriter.ttf"
 --
 mimi.gui.border         =  {}
 mimi.gui.border.left    =  4
