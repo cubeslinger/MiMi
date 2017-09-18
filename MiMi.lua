@@ -7,8 +7,7 @@ local addon, mimi = ...
 
 -- Inspect.Minion.Minion.List
 
--- local function buildiconstrip(parent, name, tbl)
-local function buildiconstrip(frame, name, tbl)      
+local function buildiconstrip(frame, name, tbl)
    local stat     =  nil
    local lasticon =  nil
 
@@ -22,19 +21,71 @@ local function buildiconstrip(frame, name, tbl)
          iconele:SetWidth(mimi.gui.font.size)
          iconele:SetLayer(2)
          if not lasticon then
-            iconele:SetPoint("TOPLEFT", frame, "TOPLEFT")         
+            iconele:SetPoint("TOPLEFT", frame, "TOPLEFT")
          else
-            iconele:SetPoint("TOPLEFT", lasticon, "TOPRIGHT")         
+            iconele:SetPoint("TOPLEFT", lasticon, "TOPRIGHT")
          end
          lasticon =  iconele
       end
-   end         
-   
-   if not lasticon then iconstrip = nil end
-   
-   return iconstrip
-   
+   end
+
+--    if not lasticon then iconstrip = nil end
+--    return iconstrip
+   return
+
 end
+
+local function buildiconstripextended(frame, name, tbl)
+   local stat     =  nil
+   local lasticon =  nil
+   local icons    =  {}
+   local cnt      =  1
+
+   -- reset old icons
+--    print ("PRE")
+   if mimi.gui.iconstockidx > 0 then
+      while (cnt <= mimi.gui.iconstockidx) do
+         mimi.gui.iconstock[cnt]:SetVisible(false)
+--          print ("cnt ("..cnt..")")
+         cnt = cnt + 1
+      end
+   end
+--    print ("POST")
+
+   for _, stat in ipairs( {"earth", "wind", "fire", "water", "life", "death", "hunting", "diplomacy", "harvesting", "dimension", "artifact", "assasination"} ) do
+      if tbl[stat] ~= "" then
+
+         if not mimi.gui.iconstock[cnt]   then
+            mimi.gui.iconstock[cnt]  =  UI.CreateFrame("Texture", "mimi_icons["..cnt.."]_"..stat, frame)
+--             print(string.format("stat=[%s] icons[]=[%s]", stat, mimi.db.icons[stat]))
+         end
+         mimi.gui.iconstock[cnt]:SetTexture("Rift", mimi.db.icons[stat])
+         mimi.gui.iconstock[cnt]:SetHeight(mimi.gui.font.size)
+         mimi.gui.iconstock[cnt]:SetWidth(mimi.gui.font.size)
+         mimi.gui.iconstock[cnt]:SetLayer(2)
+         mimi.gui.iconstock[cnt]:SetVisible(true)
+         if not lasticon then
+            mimi.gui.iconstock[cnt]:SetPoint("TOPLEFT", frame, "TOPLEFT")
+         else
+            mimi.gui.iconstock[cnt]:SetPoint("TOPLEFT", lasticon, "TOPRIGHT")
+         end
+
+         lasticon =  mimi.gui.iconstock[cnt]
+         mimi.gui.iconstockidx   =  cnt
+         cnt      =  cnt   +  1
+      end
+   end
+
+   if not lasticon then
+      mimi.gui.iconstock      =  {}
+      mimi.gui.iconstockidx   =  0
+   end
+
+   return
+
+end
+
+
 
 local function createwindow()
    local mimicontext =  UI.CreateContext("mimi_context")
@@ -66,7 +117,7 @@ local function createwindow()
       mimititleframe:SetHeight(mimi.gui.font.size)
       mimititleframe:SetPoint("TOPLEFT",  mimiextframe, "TOPLEFT",   mimi.gui.border.left, 0)
       mimititleframe:SetPoint("TOPRIGHT", mimiextframe, "TOPRIGHT",  -mimi.gui.border.right, 0)
-      
+
          -- MiniMapButton Icon
          local mimitileicon = UI.CreateFrame("Texture", "mimi_title_icon", mimiextframe)
          mimitileicon:SetTexture("Rift", "Icon_Dominion_sm.png.dds")
@@ -74,7 +125,7 @@ local function createwindow()
          mimitileicon:SetHeight(mimi.gui.font.size*2)
          mimitileicon:SetWidth(mimi.gui.font.size*2)
          mimitileicon:SetPoint("TOPLEFT",     mimititleframe, "TOPLEFT", 0, -4)
-      
+
 
          local mimititle  =  UI.CreateFrame("Text", "mimi_title", mimititleframe)
          mimititle:SetFontSize(mimi.gui.font.size)
@@ -84,8 +135,8 @@ local function createwindow()
          mimititle:SetBackgroundColor(.1, .1, .1, .5)
 --          mimititle:SetPoint("TOPLEFT",     mimititleframe, "TOPLEFT")
          mimititle:SetPoint("TOPLEFT",     mimitileicon, "TOPRIGHT", mimi.gui.border.left, 2)
-         
-         
+
+
          -- HEADER ICONIZE BUTTON
          local mimiiconizeButton = UI.CreateFrame("Texture", "mimi_iconize button", mimititleframe)
          mimiiconizeButton:SetTexture("Rift", "splitbtn_arrow_D_(normal).png.dds")
@@ -95,8 +146,8 @@ local function createwindow()
          mimiiconizeButton:EventAttach( Event.UI.Input.Mouse.Left.Click, function() mimi.gui.winobj:SetVisible(false) mimi.gui.visible = false end, "MiMi Iconize Button Pressed" )
          mimiiconizeButton:SetPoint("TOPRIGHT", mimititleframe, "TOPRIGHT", -mimi.gui.border.right, 1)
 --          cD.attachTT(iconizeButton, "minimize")
-         
-         
+
+
 
       -- MASK FRAME
       local mimimaskframe = UI.CreateFrame("Mask", "mimi_mask_frame", mimiextframe)
@@ -135,16 +186,25 @@ local function createwindow()
          miminame:SetPoint("TOPRIGHT", mimiinfoframe, "TOPRIGHT", -mimi.gui.border.right, 0)
          mimi.gui.name  =  miminame
 
-         local mimiobtained  =  UI.CreateFrame("Text", "mimi_obtained", mimiinfoframe)
+         local iconframe =  UI.CreateFrame("Frame", "mimi_info_iconframe_frame_", mimiinfoframe)
+         iconframe:SetHeight(mimi.gui.font.size)
+--          iconframe:SetPoint("TOPLEFT",  mname, "TOPRIGHT",   mimi.gui.border.left, 0)
+         iconframe:SetPoint("TOPLEFT",    miminame,   "BOTTOMLEFT",  0, mimi.gui.border.top)
+         iconframe:SetPoint("TOPRIGHT",   miminame,   "BOTTOMRIGHT", 0, mimi.gui.border.top)
+--          local iconstrip = buildiconstrip(iconframe, minionname, miniontbl)
+--          if iconstrip then iconstrip:SetPoint("TOPLEFT",   iconframe, "TOPLEFT", mimi.gui.font.size, 0) end
+         mimi.gui.iconframe   =  iconframe
+
+         local mimiobtained  =  UI.CreateFrame("Text", "mimi_info_obtained", mimiinfoframe)
          mimiobtained:SetFontSize(mimi.gui.font.size)
          mimiobtained:SetBackgroundColor(.1, .1, .1, .5)
          mimiobtained:SetLayer(3)
-         mimiobtained:SetPoint("TOPLEFT",    miminame,   "BOTTOMLEFT",  0, mimi.gui.border.top)
-         mimiobtained:SetPoint("TOPRIGHT",   miminame,   "BOTTOMRIGHT", 0, mimi.gui.border.top)
+         mimiobtained:SetPoint("TOPLEFT",    iconframe,   "BOTTOMLEFT",  0, mimi.gui.border.top)
+         mimiobtained:SetPoint("TOPRIGHT",   iconframe,   "BOTTOMRIGHT", 0, mimi.gui.border.top)
          mimi.gui.obtained =  mimiobtained
 
          -- Detail Field
-         local mimidetail  =  UI.CreateFrame("Text", "mimi_detail", mimiinfoframe)
+         local mimidetail  =  UI.CreateFrame("Text", "mimi_info_detail", mimiinfoframe)
          mimidetail:SetFontSize(mimi.gui.font.size)
          mimidetail:SetBackgroundColor(.1, .1, .1, .5)
          mimidetail:SetLayer(3)
@@ -227,6 +287,11 @@ function mimi.showdetail(minionname)
    mimi.gui.name:SetText("")
    mimi.gui.name:SetText(minionname)
    --
+   buildiconstripextended(mimi.gui.iconframe, minionname, mimi.db.minions[minionname])
+--    if iconstrip then
+--       iconstrip:SetPoint("TOPLEFT",   mimi.gui.iconframe, "TOPLEFT", mimi.gui.font.size, 0)
+--    end
+   --
    mimi.gui.obtained:SetText("")
    mimi.gui.obtained:SetText(mimi.db.minions[minionname].obtained)
    --
@@ -246,7 +311,7 @@ local function createline(number, minionname, miniontbl, mimiframe)
    local num           =  UI.CreateFrame("Text", "missingminionnum",   missingframe)
    num:SetFont(mimi.addon, mimi.gui.font.face)
    num:SetFontSize(mimi.gui.font.size)
-   num:SetWidth(mimi.gui.font.size)
+   num:SetWidth(mimi.gui.font.size*3)
    num:SetText(string.format("%s", number))
    num:SetLayer(3)
    num:SetPoint("TOPLEFT",   missingframe, "TOPLEFT")
@@ -258,13 +323,13 @@ local function createline(number, minionname, miniontbl, mimiframe)
    mname:SetText(string.format("%s", minionname))
    mname:SetLayer(3)
    mname:SetPoint("TOPLEFT",   num, "TOPRIGHT", mimi.gui.font.size, 0)
-   
+
    local iconframe =  UI.CreateFrame("Frame", "mimi_iconframe_frame_"..minionname, missingframe)
    iconframe:SetHeight(mimi.gui.font.size)
    iconframe:SetWidth(mimi.gui.font.size*6)
    iconframe:SetPoint("TOPLEFT",  mname, "TOPRIGHT",   mimi.gui.border.left, 0)
    local iconstrip = buildiconstrip(iconframe, minionname, miniontbl)
-   if iconstrip then iconstrip:SetPoint("TOPLEFT",   iconframe, "TOPLEFT", mimi.gui.font.size, 0) end 
+   if iconstrip then iconstrip:SetPoint("TOPLEFT",   iconframe, "TOPLEFT", mimi.gui.font.size, 0) end
 
    local obtained       =  UI.CreateFrame("Text", "missingminionobtained",   missingframe)
    obtained:SetFont(mimi.addon, mimi.gui.font.face)
@@ -278,7 +343,7 @@ local function createline(number, minionname, miniontbl, mimiframe)
 --    details:SetText(string.format("%s", miniontbl.details))
 --    details:SetLayer(3)
 --    details:SetPoint("TOPLEFT",   obtained, "TOPRIGHT", mimi.gui.font.size, 0)
-   
+
 
    return(missingframe)
 end
@@ -328,10 +393,10 @@ function mimi.searchformissing()
 --       print(string.format("Name is >%s<", name))
       local t        =  Inspect.Minion.Minion.Detail(id)
       local myname   =  t.name
-      local rarity   =  t.rarity      
-      
+      local rarity   =  t.rarity
+
       -- DEBUG DUMPING - begin
-      mimi.db.id[myname]   =  id     
+      mimi.db.id[myname]   =  id
       if rarity   then  mimi.db.rarity[myname]  =  rarity   end
       -- DEBUG DUMPING - end
 

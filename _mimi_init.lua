@@ -47,6 +47,8 @@ mimi.gui.listeleheight  =  nil
 mimi.gui.titleh         =  38
 mimi.gui.collected      =  nil
 mimi.gui.missing        =  nil
+mimi.gui.iconstock      =  {}
+mimi.gui.iconstockidx   =  0
 --
 mimi.db                 =  {}
 mimi.db.minions         =  {}
@@ -65,7 +67,6 @@ mimi.db.icons["harvesting"]   =  "Minion_I151.dds"
 mimi.db.icons["dimension"]    =  "Minion_I153.dds"
 mimi.db.icons["artifact"]     =  "Minion_I155.dds"
 mimi.db.icons["assasination"] =  "Minion_I157.dds"
-
 --
 mimi.html					=  {}
 mimi.html.colors        =  {}
@@ -91,7 +92,7 @@ mimi.vars.collected           =  0
 mimi.vars.missing             =  0
 mimi.vars.outofdbno           =  0
 --
-      
+
 function mimi.round(num, digits)
    local floor = math.floor
    local mult = 10^(digits or 0)
@@ -147,7 +148,7 @@ function mimi.savevariables(_, addonname)
       gui         =  a
 
       rarity      =  mimi.db.rarity
-      
+
       ids         =  mimi.db.id
    end
 
