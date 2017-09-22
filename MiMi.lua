@@ -147,36 +147,34 @@ local function createwindow()
          mimiiconizeButton:SetPoint("TOPRIGHT", mimititleframe, "TOPRIGHT", -mimi.gui.border.right, 1)
 --          cD.attachTT(iconizeButton, "minimize")
 
-
-
-      -- MASK FRAME
+      -- LIST MASK FRAME
       local mimimaskframe = UI.CreateFrame("Mask", "mimi_mask_frame", mimiextframe)
       mimimaskframe:SetPoint("TOPLEFT",     mimititleframe, "BOTTOMLEFT",  0, mimi.gui.border.top*2)
-      mimimaskframe:SetPoint("TOPRIGHT",    mimititleframe, "BOTTOMRIGHT", -(mimi.gui.border.right + mimi.gui.scroll.width),  mimi.gui.border.top*2)
+      mimimaskframe:SetPoint("TOPRIGHT",    mimititleframe, "BOTTOMRIGHT", -(mimi.gui.border.right + mimi.gui.listscroll.width),  mimi.gui.border.top*2)
       mimimaskframe:SetPoint("BOTTOMLEFT",  mimiextframe, "TOPLEFT",    0, mimi.gui.panelheight)
-      mimimaskframe:SetPoint("BOTTOMRIGHT", mimiextframe, "TOPRIGHT",   -(mimi.gui.border.right + mimi.gui.scroll.width), mimi.gui.panelheight)
+      mimimaskframe:SetPoint("BOTTOMRIGHT", mimiextframe, "TOPRIGHT",   -(mimi.gui.border.right + mimi.gui.listscroll.width), mimi.gui.panelheight)
       mimimaskframe:SetLayer(2)
 
-      -- CONTAINER FRAME
+      -- LIST CONTAINER FRAME
       local mimiframe =  UI.CreateFrame("Frame", "mimi_frame", mimimaskframe)
       mimiframe:SetAllPoints(mimimaskframe)
-      mimiframe:SetBackgroundColor(.1, .1, .1, .5)
       mimiframe:SetLayer(2)
 
-      -- MASK FRAME
+      -- INFO MASK FRAME
       local mimimaskinfo = UI.CreateFrame("Mask", "mimi_mask_info", mimiextframe)
       mimimaskinfo:SetPoint("TOPLEFT",     mimimaskframe, "BOTTOMLEFT",  0, mimi.gui.border.top)
-      mimimaskinfo:SetPoint("TOPRIGHT",    mimimaskframe, "BOTTOMRIGHT", mimi.gui.border.right+mimi.gui.scroll.width, mimi.gui.border.top)
+      mimimaskinfo:SetPoint("TOPRIGHT",    mimimaskframe, "BOTTOMRIGHT", 0, mimi.gui.border.top)
       mimimaskinfo:SetPoint("BOTTOMLEFT",  mimimaskframe, "BOTTOMLEFT",  0, (mimi.gui.border.top + mimi.gui.infoheight))
-      mimimaskinfo:SetPoint("BOTTOMRIGHT", mimimaskframe, "BOTTOMRIGHT", mimi.gui.border.right+mimi.gui.scroll.width, (mimi.gui.border.top + mimi.gui.infoheight))
+      mimimaskinfo:SetPoint("BOTTOMRIGHT", mimimaskframe, "BOTTOMRIGHT", 0, (mimi.gui.border.top + mimi.gui.infoheight))
       mimimaskinfo:SetLayer(2)
 
-      -- INFO FRAME
+      -- INFO CONTAINER FRAME
       local mimiinfoframe =  UI.CreateFrame("Frame", "mimi_info_frame", mimimaskinfo)
       mimiinfoframe:SetAllPoints(mimimaskinfo)
       mimiinfoframe:SetBackgroundColor(.1, .1, .1, .5)
       mimiinfoframe:SetLayer(2)
 
+         -- Minion Name Field
          local miminame  =  UI.CreateFrame("Text", "mimi_name", mimiinfoframe)
          miminame:SetFontSize(mimi.gui.font.size * 2)
          miminame:SetFontColor(1, 1, 0, .4)
@@ -186,15 +184,14 @@ local function createwindow()
          miminame:SetPoint("TOPRIGHT", mimiinfoframe, "TOPRIGHT", -mimi.gui.border.right, 0)
          mimi.gui.name  =  miminame
 
+         -- Icons Field
          local iconframe =  UI.CreateFrame("Frame", "mimi_info_iconframe_frame_", mimiinfoframe)
          iconframe:SetHeight(mimi.gui.font.size)
---          iconframe:SetPoint("TOPLEFT",  mname, "TOPRIGHT",   mimi.gui.border.left, 0)
          iconframe:SetPoint("TOPLEFT",    miminame,   "BOTTOMLEFT",  0, mimi.gui.border.top)
          iconframe:SetPoint("TOPRIGHT",   miminame,   "BOTTOMRIGHT", 0, mimi.gui.border.top)
---          local iconstrip = buildiconstrip(iconframe, minionname, miniontbl)
---          if iconstrip then iconstrip:SetPoint("TOPLEFT",   iconframe, "TOPLEFT", mimi.gui.font.size, 0) end
          mimi.gui.iconframe   =  iconframe
 
+         -- Obtained Field
          local mimiobtained  =  UI.CreateFrame("Text", "mimi_info_obtained", mimiinfoframe)
          mimiobtained:SetFontSize(mimi.gui.font.size)
          mimiobtained:SetBackgroundColor(.1, .1, .1, .5)
@@ -214,28 +211,54 @@ local function createwindow()
          mimi.gui.detail   =  mimidetail
 
       -- ITEMS SCROLLBAR
-      mimiscroll = UI.CreateFrame("RiftScrollbar","mimi_scrollbar", mimiextframe)
-      mimiscroll:SetVisible(true)
-      mimiscroll:SetEnabled(true)
-      mimiscroll:SetOrientation("vertical")
-      mimiscroll:SetLayer(2)
-      mimiscroll:SetPoint("TOPRIGHT",     mimititleframe,   "BOTTOMRIGHT", 0, mimi.gui.border.top)
-      mimiscroll:SetPoint("BOTTOMRIGHT",  mimiextframe,     "TOPRIGHT",    0, mimi.gui.panelheight)
-      mimiscroll:EventAttach(   Event.UI.Scrollbar.Change,
-                              function()
-                                 local pos = mimi.round(mimiscroll:GetPosition())
-                                 if pos ~= mimi.gui.scroll.lastpos then
-                                    if pos == 1 then
-                                       mimiframe:SetAllPoints(mimimaskframe)
-                                    else
-                                       mimi.gui.scroll.lastpos =  pos
-                                       local newy  =  -math.floor(mimi.gui.listeleheight * pos)
-                                       mimiframe:SetPoint("TOPLEFT", mimimaskframe, "TOPLEFT", 0, newy )
-                                    end
-                                 end
-                              end,
-                              "TotalsFrame_Scrollbar.Change"
-                           )
+      mimilistscroll = UI.CreateFrame("RiftScrollbar","mimi_scrollbar", mimiextframe)
+      mimilistscroll:SetVisible(true)
+      mimilistscroll:SetEnabled(true)
+      mimilistscroll:SetOrientation("vertical")
+      mimilistscroll:SetLayer(2)
+      mimilistscroll:SetPoint("TOPRIGHT",     mimititleframe,   "BOTTOMRIGHT", 0, mimi.gui.border.top)
+      mimilistscroll:SetPoint("BOTTOMRIGHT",  mimiextframe,     "TOPRIGHT",    0, mimi.gui.panelheight)
+      mimilistscroll:EventAttach(   Event.UI.Scrollbar.Change,
+                                    function()
+                                       local pos = mimi.round(mimilistscroll:GetPosition())
+                                       if pos ~= mimi.gui.listscroll.lastpos then
+                                          if pos == 1 then
+                                             mimiframe:SetAllPoints(mimimaskframe)
+                                          else
+                                             mimi.gui.listscroll.lastpos =  pos
+                                             local newy  =  -math.floor(mimi.gui.listeleheight * pos)
+                                             mimiframe:SetPoint("TOPLEFT", mimimaskframe, "TOPLEFT", 0, newy )
+                                          end
+                                       end
+                                    end,
+                                    "TotalsFrame_Scrollbar.Change"
+                                 )
+
+      -- ITEMS INFO SCROLLBAR
+      mimiinfoscroll = UI.CreateFrame("RiftScrollbar","mimi_info_scrollbar", mimiextframe)
+      mimiinfoscroll:SetVisible(true)
+      mimiinfoscroll:SetEnabled(true)
+      mimiinfoscroll:SetOrientation("vertical")
+      mimiinfoscroll:SetLayer(2)
+      mimiinfoscroll:SetPoint("TOPRIGHT",     mimimaskframe,   "BOTTOMRIGHT",  mimi.gui.infoscroll.width, mimi.gui.border.top)
+      mimiinfoscroll:SetPoint("BOTTOMRIGHT",  mimimaskframe,   "BOTTOMRIGHT",  mimi.gui.infoscroll.width, mimi.gui.border.top + mimi.gui.infoheight)
+      mimiinfoscroll:EventAttach(   Event.UI.Scrollbar.Change,
+                                    function()
+                                       local pos = mimi.round(mimiinfoscroll:GetPosition())
+--                                        print("POS ("..pos..")")
+                                       if pos ~= mimi.gui.infoscroll.lastpos then
+                                          if pos == 1 then
+                                             mimiinfoframe:SetAllPoints(mimimaskinfo)
+--                                              print("POS is 1!")
+                                          else
+                                             mimi.gui.infoscroll.lastpos =  pos
+                                             local newy        =  -math.floor(mimi.gui.font.size * pos)
+                                             mimiinfoframe:SetPoint("TOPLEFT", mimimaskinfo, "TOPLEFT", 0, newy )
+                                          end
+                                       end
+                                    end,
+                                 "mimi_info_Scrollbar.Change"
+                                 )
 
       -- Status Frame
       local mimistatusframe =  UI.CreateFrame("Frame", "mimi_status_frame", mimiextframe)
@@ -279,7 +302,7 @@ local function createwindow()
    -- Enable Dragging
    Library.LibDraggable.draggify(mimiwin, mimi.updateguicoordinates)
 
-   return mimiwin, mimiframe, mimiinfoframe, mimiscroll
+   return mimiwin, mimiframe, mimiinfoframe, mimilistscroll, mimiinfoscroll
 end
 
 
@@ -288,12 +311,16 @@ function mimi.showdetail(minionname)
    mimi.gui.name:SetText(minionname)
    --
    buildiconstripextended(mimi.gui.iconframe, minionname, mimi.db.minions[minionname])
---    if iconstrip then
---       iconstrip:SetPoint("TOPLEFT",   mimi.gui.iconframe, "TOPLEFT", mimi.gui.font.size, 0)
---    end
    --
    mimi.gui.obtained:SetText("")
    mimi.gui.obtained:SetText(mimi.db.minions[minionname].obtained)
+   --
+--    local h        =  mimi.gui.info:GetHeight()
+--    local perframe =  mimi.round(h / mimi.gui.font.size)
+--    local cnt   =  select(2, mimi.db.minions[minionname].details:gsub('\n', '\n'))
+--    local scrollsteps =  (cnt - perframe) + mimi.gui.font.size
+--    print("lines ("..cnt..") perframe ("..perframe..") scrollsteps ("..scrollsteps..")")
+--    mimi.gui.infoscroll.obj:SetRange(1, scrollsteps)
    --
    mimi.gui.detail:SetText("")
    mimi.gui.detail:SetText(mimi.db.minions[minionname].details)
@@ -425,11 +452,12 @@ function mimi.searchformissing()
       found =  false
    end
 
-   local mimiwin, mimiframe, mimiinfoframe, mimiscroll = createwindow()
-   mimi.gui.winobj   =  mimiwin
-   mimi.gui.frame    =  mimiframe
-   mimi.gui.info     =  mimiinfoframe
-   mimi.gui.scroll   =  mimiscroll
+   local mimiwin, mimiframe, mimiinfoframe, mimilistscroll, mimiinfoscroll = createwindow()
+   mimi.gui.winobj         =  mimiwin
+   mimi.gui.frame          =  mimiframe
+   mimi.gui.info           =  mimiinfoframe
+   mimi.gui.listscroll.obj =  mimilistscroll
+   mimi.gui.infoscroll.obj =  mimiinfoscroll
 
    -- sort missingtbl by Alphabetic Order
    local s     =  {}
@@ -442,7 +470,7 @@ function mimi.searchformissing()
    local h           =  mimiframe:GetHeight()
    local perframe    =  mimi.round(h / mimi.gui.listeleheight)
    local scrollsteps =  (missing - perframe) + 1
-   mimi.gui.scroll:SetRange(1, scrollsteps)
+   mimi.gui.listscroll.obj:SetRange(1, scrollsteps)
 
 --    print(string.format("MiMi Total: %s, Collected: %s, Missing: %s OutofDb: %s", total, collected, missing, outofdbno))
 --
