@@ -65,6 +65,9 @@ function mimi.createminimapbutton()
       end
 
       mimi.gui.mmbtnobj   =  mmbutton
+
+      -- say "Hello World"
+      Command.Console.Display("general", true, string.format("%s - v.%s", mimi.html.title, mimi.version), true)
    else
       mmbutton = mimi.gui.mmbtnobj
    end

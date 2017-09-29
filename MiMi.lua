@@ -320,13 +320,6 @@ function mimi.showdetail(minionname)
    mimi.gui.obtained:SetText("")
    mimi.gui.obtained:SetText(mimi.db.minions[minionname].obtained)
    --
---    local h        =  mimi.gui.info:GetHeight()
---    local perframe =  mimi.round(h / mimi.gui.font.size)
---    local cnt   =  select(2, mimi.db.minions[minionname].details:gsub('\n', '\n'))
---    local scrollsteps =  (cnt - perframe) + mimi.gui.font.size
---    print("lines ("..cnt..") perframe ("..perframe..") scrollsteps ("..scrollsteps..")")
---    mimi.gui.infoscroll.obj:SetRange(1, scrollsteps)
-   --
    mimi.gui.detail:SetText("")
    mimi.gui.detail:SetText(mimi.db.minions[minionname].details)
 
@@ -369,13 +362,6 @@ local function createline(number, minionname, miniontbl, mimiframe)
    obtained:SetText(string.format("%s", miniontbl.obtained))
    obtained:SetLayer(3)
    obtained:SetPoint("TOPLEFT",   iconframe, "TOPRIGHT", mimi.gui.font.size, 0)
-
---    local details       =  UI.CreateFrame("Text", "missingminiondetails",   missingframe)
---    details:SetFontSize(mimi.gui.font.size)
---    details:SetText(string.format("%s", miniontbl.details))
---    details:SetLayer(3)
---    details:SetPoint("TOPLEFT",   obtained, "TOPRIGHT", mimi.gui.font.size, 0)
-
 
    return(missingframe)
 end
@@ -477,11 +463,6 @@ function mimi.searchformissing()
    local scrollsteps =  (missing - perframe) + 1
    mimi.gui.listscroll.obj:SetRange(1, scrollsteps)
 
---    print(string.format("MiMi Total: %s, Collected: %s, Missing: %s OutofDb: %s", total, collected, missing, outofdbno))
---
---    mimi.gui.missing:SetText(missing)
---    mimi.gui.collected:SetText(collected)
-
    if (#outofdb > 0) then for _, myname in pairs(outofdb) do print(string.format("  outofdb: %s", myname)) end end
 
    return missing, collected, outofdbno, outofdb
@@ -490,3 +471,4 @@ end
 Command.Event.Attach(Event.Addon.SavedVariables.Load.End,   mimi.loadvariables,   "MiMi: Load Variables")
 Command.Event.Attach(Event.Addon.SavedVariables.Save.Begin, mimi.savevariables,   "MiMi: Load Variables")
 Command.Event.Attach(Event.Unit.Availability.Full, function() mimi.gui.mmbtnobj =  mimi.createminimapbutton() end, "MiMi: mimimap Button")
+

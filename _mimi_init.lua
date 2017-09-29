@@ -204,17 +204,3 @@ function mimi.makeDraggable(window)
 
    return
 end
-
--- Command.Event.Attach(Event.Addon.SavedVariables.Load.End,   mimi.loadvariables,   "MiMi: Load Variables")
--- Command.Event.Attach(Event.Addon.SavedVariables.Save.Begin, mimi.savevariables,   "MiMi: Load Variables")
-
---[[
-   Error: MiMi/_mimi_init.lua:52: attempt to yield across C-call boundary
-   In MiMi / MiMi.mimi_mmBtnIcon:Event.UI.Input.Mouse.Left.Click
-   stack traceback:
-   [C]: ?
-   [C]: in function 'yield'
-   MiMi/_mimi_init.lua:52: in function 'job_search'
-   MiMi/_mimi_minimapbutton.lua:13: in function 'showhidewindow'
-   MiMi/_mimi_minimapbutton.lua:49: in function <MiMi/_mimi_minimapbutton.lua:49>
-   --]]
