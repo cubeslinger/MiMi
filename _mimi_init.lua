@@ -21,11 +21,11 @@ mimi.gui.border.top     =  4
 mimi.gui.border.bottom  =  4
 --
 mimi.gui.listscroll        =  {}
-mimi.gui.listscroll.width  =  14
+mimi.gui.listscroll.width  =  10 -- 14
 mimi.gui.listscroll.lastpos=  0
 mimi.gui.listscroll.obj    =  nil
 mimi.gui.infoscroll        =  {}
-mimi.gui.infoscroll.width  =  14
+mimi.gui.infoscroll.width  =  10 -- 14
 mimi.gui.infoscroll.obj    =  nil
 mimi.gui.infoscroll.lastpos=  0
 
