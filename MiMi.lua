@@ -166,7 +166,7 @@ local function createwindow()
       mimimaskinfo:SetPoint("TOPRIGHT",    mimimaskframe, "BOTTOMRIGHT", 0, mimi.gui.border.top)
       mimimaskinfo:SetPoint("BOTTOMLEFT",  mimimaskframe, "BOTTOMLEFT",  0, (mimi.gui.border.top + mimi.gui.infoheight))
       mimimaskinfo:SetPoint("BOTTOMRIGHT", mimimaskframe, "BOTTOMRIGHT", 0, (mimi.gui.border.top + mimi.gui.infoheight))
-      mimimaskinfo:SetBackgroundColor(1, 0, 0, .5)
+--       mimimaskinfo:SetBackgroundColor(1, 0, 0, .5)
       mimimaskinfo:SetLayer(2)
 
       -- INFO CONTAINER FRAME
@@ -176,6 +176,8 @@ local function createwindow()
 
          -- Minion Name Field
          local miminame  =  UI.CreateFrame("Text", "mimi_name", mimiinfoframe)
+         -- Name in nicer without monospace fonts
+         -- miminame:SetFont(mimi.addon, mimi.gui.font.face)
          miminame:SetFontSize(mimi.gui.font.size * 2)
          miminame:SetFontColor(1, 1, 0, .4)
          miminame:SetLayer(3)
@@ -193,6 +195,7 @@ local function createwindow()
          -- Obtained Field
          local mimiobtained  =  UI.CreateFrame("Text", "mimi_info_obtained", mimiinfoframe)
          mimiobtained:SetFontSize(mimi.gui.font.size)
+         mimiobtained:SetFont(mimi.addon, mimi.gui.font.face)
          mimiobtained:SetLayer(3)
          mimiobtained:SetPoint("TOPLEFT",    iconframe,   "BOTTOMLEFT",  0, mimi.gui.border.top)
          mimiobtained:SetPoint("TOPRIGHT",   iconframe,   "BOTTOMRIGHT", 0, mimi.gui.border.top)
@@ -201,11 +204,12 @@ local function createwindow()
          -- Detail Field
          local mimidetail  =  UI.CreateFrame("Text", "mimi_info_detail", mimiinfoframe)
          mimidetail:SetFontSize(mimi.gui.font.size)
+         mimidetail:SetFont(mimi.addon, mimi.gui.font.face)
          mimidetail:SetLayer(3)
          mimidetail:SetPoint("TOPLEFT",  mimiobtained,  "BOTTOMLEFT", 0, mimi.gui.border.top)
          mimidetail:SetPoint("BOTTOMRIGHT",  mimiinfoframe,  "BOTTOMRIGHT", 0, -mimi.gui.border.bottom)
          mimidetail:SetWordwrap(true)
-         mimidetail:SetBackgroundColor(0, 1, 0, .5)
+--          mimidetail:SetBackgroundColor(0, 1, 0, .5)
          mimi.gui.detail   =  mimidetail
 
       -- ITEMS SCROLLBAR
@@ -270,6 +274,7 @@ local function createwindow()
       mimistatusframe:SetBackgroundColor(.1, .1, .1, .5)
 
          local mimistatusmissinglabel =  UI.CreateFrame("Text", "mimi_status_missing_label", mimistatusframe)
+         mimistatusmissinglabel:SetFont(mimi.addon, mimi.gui.font.face)
          mimistatusmissinglabel:SetText("Missing: ")
          mimistatusmissinglabel:SetFontColor(1, 1, 0, .4)
          mimistatusmissinglabel:SetPoint("TOPLEFT",     mimistatusframe, "TOPLEFT")
@@ -277,6 +282,7 @@ local function createwindow()
 
          local mimistatusmissing  =  UI.CreateFrame("Text", "mimi_status_missing_counter", mimistatusframe)
          mimistatusmissing:SetPoint("TOPLEFT",     mimistatusmissinglabel, "TOPRIGHT")
+         mimistatusmissing:SetFont(mimi.addon, mimi.gui.font.face)
          mimistatusmissing:SetFontColor(1, 1, 0, .4)
          mimistatusmissing:SetText("0")
          mimistatusmissing:SetLayer(2)
@@ -284,16 +290,19 @@ local function createwindow()
 
          local mimistatuscollected   =  UI.CreateFrame("Text", "mimi_status_collected_counter", mimistatusframe)
          mimistatuscollected:SetPoint("TOPRIGHT",     mimistatusframe, "TOPRIGHT")
+         mimistatuscollected:SetFont(mimi.addon, mimi.gui.font.face)
          mimistatuscollected:SetFontColor(1, 1, 0, .4)
          mimistatuscollected:SetText("0")
          mimistatuscollected:SetLayer(2)
          mimi.gui.collected         =  mimistatuscollected
 
          local mimistatuscollectedlabel =  UI.CreateFrame("Text", "mimi_status_collected_label", mimistatusframe)
+         mimistatuscollectedlabel:SetFont(mimi.addon, mimi.gui.font.face)
          mimistatuscollectedlabel:SetText("Collected: ")
          mimistatuscollectedlabel:SetFontColor(1, 1, 0, .4)
          mimistatuscollectedlabel:SetPoint("TOPRIGHT",     mimistatuscollected, "TOPLEFT", -mimi.gui.border.right, 0)
          mimistatuscollectedlabel:SetLayer(2)
+
 
    -- Enable Dragging
    Library.LibDraggable.draggify(mimiwin, mimi.updateguicoordinates)
